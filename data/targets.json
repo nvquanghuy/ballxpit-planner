@@ -1,0 +1,1930 @@
+{
+  "generatedAt": "2026-10-30",
+  "targets": [
+    {
+      "id": "holy-laser",
+      "kind": "evolution",
+      "ball": "Holy Laser",
+      "tier": "S",
+      "why": "Consensus #1: hits every enemy in its row and column; S on PCGamesN, Dexerto, Commonsense",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "sun",
+      "kind": "evolution",
+      "ball": "Sun",
+      "tier": "S",
+      "why": "Blinds all enemies on screen and burns them each second; PCGamesN S, DualShockers #1",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "mosquito-king",
+      "kind": "evolution",
+      "ball": "Mosquito King",
+      "tier": "S",
+      "why": "Mosquito per hit that steals health; snowballs damage plus sustain; S on PCGamesN/GameRant",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "nuclear-bomb",
+      "kind": "evolution",
+      "ball": "Nuclear Bomb",
+      "tier": "S",
+      "why": "Heavy AOE plus stacking radiation that amps all damage; PCGamesN/Dexerto A, own judgment bumps to S",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://games.gg/ball-x-pit/guides/ball-x-pit-evolution-combos/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "magma",
+      "kind": "evolution",
+      "ball": "Magma",
+      "tier": "S",
+      "why": "Lava pools burn waves and bosses; S on Dexerto/GameRant, but PCGamesN rates it C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "sandstorm",
+      "kind": "evolution",
+      "ball": "Sandstorm",
+      "tier": "S",
+      "why": "Piercing storm with damage + blind, cheap 2-base recipe; Dexerto S, Commonsense S",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "nosferatu",
+      "kind": "evolution",
+      "ball": "Nosferatu",
+      "tier": "S",
+      "why": "Bats that become Vampire Lords on each bounce; costly 3-evo recipe but run-winning",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "x-ray",
+      "kind": "evolution",
+      "ball": "X Ray",
+      "tier": "S",
+      "why": "Unrated online; own judgment: Holy Laser upgrade adding X-pattern lasers with radiation stacks",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "mosquito-kingdom",
+      "kind": "evolution",
+      "ball": "Mosquito Kingdom",
+      "tier": "S",
+      "why": "Unrated online (Naturalist update); own judgment: 1-2 strong mosquitos per hit beats Mosquito King",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "holy-laser+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Maggot"
+      ],
+      "tier": "S",
+      "why": "PCGamesN notes this fusion deals devastating damage; Maggot babies reportedly carry laser hits",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://studio-asv.pages.dev/blog/ball-x-pit/ball-x-pit-complete-strategy-guide",
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://www.youtube.com/watch?v=hnZbDa6D5IQ",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oajvpb/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1q5vru3/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oi23yu/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "overgrowth+flicker",
+      "kind": "fusion",
+      "balls": [
+        "Overgrowth",
+        "Flicker"
+      ],
+      "tier": "S",
+      "why": "Full-screen pulse every 1.2s spreads Overgrowth stacks → screen-wide 3x3 blasts; best hands-free wave clear",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qei5dz/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1osa0nq/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1owbuar/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "overgrowth+flash",
+      "kind": "fusion",
+      "balls": [
+        "Overgrowth",
+        "Flash"
+      ],
+      "tier": "S",
+      "why": "Each hit pulses the whole screen, stacking Overgrowth everywhere + blind; huge clear while the ball keeps hitting",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oe0yk2/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1p6penh/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1t1qvfx/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+flash",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Flash"
+      ],
+      "tier": "S",
+      "why": "Bosses/general: each hit spreads Bleed screen-wide and triggers 20%-HP bursts (capped at 9999); core of many endless builds and boss melts",
+      "sources": [
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://www.youtube.com/watch?v=VsRQkunMOZk",
+        "https://www.reddit.com/r/BALLxPIT/comments/1q2bfxg/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1rhny1o/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1q094pj/_/nwwxwgt/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+black-hole",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Black Hole"
+      ],
+      "tier": "S",
+      "why": "General: Steam's 'strongest fusion found' and the DPS guide's 'Neutron Bomb'; screen-clears every shot and reportedly two-shots bosses, but costs ~6 base balls",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://www.youtube.com/watch?v=dpxwcz2O4AI",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qpdiou/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ob21so/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1wsvh7o/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Maggot"
+      ],
+      "tier": "S",
+      "why": "Waves: maggots spread mini-nukes on death for strong clears (~3.4k DPS), but weak single-target on bosses. Reddit: ~75 posters on r/BALLxPIT plus general subs call it an \"instawin\"",
+      "sources": [
+        "https://studio-asv.pages.dev/blog/ball-x-pit/ball-x-pit-complete-strategy-guide",
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oay9g8/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pupwfx/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oup6hu/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole+sun",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Sun"
+      ],
+      "tier": "S",
+      "why": "Waves: Sun's screen-wide trigger lets Black Hole delete every non-boss enemy every few seconds; does nothing to bosses. r/BALLxPIT's most-cited fusion (~220 posters): wipes waves, weaker on bosses at high NG+",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1owwc27/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oeyv76/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1s0tswe/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "reaper+flicker",
+      "kind": "fusion",
+      "balls": [
+        "Reaper",
+        "Flicker"
+      ],
+      "tier": "S",
+      "why": "Waves/endless: Flicker's screen pulse rolls Reaper's instakill chance on every enemy; Naturalist-era endless build (bosses immune). Reddit endless favourite (~36 posters, 250,000m run); one claim of a boss damage cap since Aug 2026, disputed",
+      "sources": [
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3782381087",
+        "https://www.reddit.com/r/BALLxPIT/comments/1xhad8v/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1vm0nxn/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1vv2kuq/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "maggot+reaper",
+      "kind": "fusion",
+      "balls": [
+        "Maggot",
+        "Reaper"
+      ],
+      "tier": "S",
+      "why": "Reddit endless pick since the Apr 2026 Shadow Update (~56 posters on r/BALLxPIT)",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1sy5s97/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1x4macn/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1vm5ng8/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "flash+reaper",
+      "kind": "fusion",
+      "balls": [
+        "Flash",
+        "Reaper"
+      ],
+      "tier": "S",
+      "why": "Reddit endless pick (~49 posters on r/BALLxPIT)",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1syfs33/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1tafj7d/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1w6rdy2/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole",
+      "kind": "evolution",
+      "ball": "Black Hole",
+      "tier": "A",
+      "why": "Instakills first non-boss hit then self-destructs; S on PCGamesN/Dexerto, B on GameRant, weak vs bosses",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "maggot",
+      "kind": "evolution",
+      "ball": "Maggot",
+      "tier": "A",
+      "why": "Infested enemies burst into baby balls; PCGamesN S, GameRant D; mainly a fusion enabler",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "satan",
+      "kind": "evolution",
+      "ball": "Satan",
+      "tier": "A",
+      "why": "Burns all active enemies each second and berserks them; Commonsense S, expensive 2-evo recipe",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://games.gg/ball-x-pit/guides/ball-x-pit-evolution-combos/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "frozen-flame",
+      "kind": "evolution",
+      "ball": "Frozen Flame",
+      "tier": "A",
+      "why": "Frostburn stacks deal damage and raise damage taken; GameRant/Commonsense S, Dexerto B",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "spider-queen",
+      "kind": "evolution",
+      "ball": "Spider Queen",
+      "tier": "A",
+      "why": "Births Egg Sacs on hit to flood the field; A on PCGamesN/Dexerto, S on Commonsense",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "flicker",
+      "kind": "evolution",
+      "ball": "Flicker",
+      "tier": "A",
+      "why": "Periodically damages every enemy on screen; Dexerto S, scales with ball damage",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "laser-cutter",
+      "kind": "evolution",
+      "ball": "Laser Cutter",
+      "tier": "A",
+      "why": "Constant forward laser keeps pressure on its lane; Dexerto S, needs Steel first",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "landslide",
+      "kind": "evolution",
+      "ball": "Landslide",
+      "tier": "A",
+      "why": "Damaging landslide area on hit; Dexerto S but self-destroys on hit so uptime is limited",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "assassin",
+      "kind": "evolution",
+      "ball": "Assassin",
+      "tier": "A",
+      "why": "Bonus backstab damage passing through fronts; GameRant S, DualShockers top 10",
+      "sources": [
+        "https://ballxpit-org-astro.pages.dev/guides/evolution-tier-list-2025",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "mosquito-swarm",
+      "kind": "evolution",
+      "ball": "Mosquito Swarm",
+      "tier": "A",
+      "why": "Explodes into healing seeker mosquitos; A on PCGamesN and Dexerto",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "overgrowth",
+      "kind": "evolution",
+      "ball": "Overgrowth",
+      "tier": "A",
+      "why": "Three stacks trigger an area burst; reliable wave clear; Dexerto/Commonsense A",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "glacier",
+      "kind": "evolution",
+      "ball": "Glacier",
+      "tier": "A",
+      "why": "Glacial spikes freeze and damage a wide area; Dexerto A",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "lightning-rod",
+      "kind": "evolution",
+      "ball": "Lightning Rod",
+      "tier": "A",
+      "why": "Rods in enemies periodically chain lightning to neighbours; Dexerto A",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "incubus",
+      "kind": "evolution",
+      "ball": "Incubus",
+      "tier": "A",
+      "why": "Charmed enemies curse their neighbours; Dexerto/Commonsense A; also Satan parent",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "banshee",
+      "kind": "evolution",
+      "ball": "Banshee",
+      "tier": "A",
+      "why": "Unrated online; own judgment: curses every enemy on launch, a field-wide Phantom",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "reaper",
+      "kind": "evolution",
+      "ball": "Reaper",
+      "tier": "A",
+      "why": "Unrated online; own judgment: chance to instakill on impact plus healing",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "armageddon",
+      "kind": "evolution",
+      "ball": "Armageddon",
+      "tier": "A",
+      "why": "Unrated online (Naturalist); own judgment: meteor shower on hit for 5s, big AOE",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "nuclear-bomb+holy-laser",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Holy Laser"
+      ],
+      "tier": "A",
+      "why": "General: nuke radiation plus row/column lasers; one player says it one-shots what the laser touches",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "holy-laser+radiation-beam",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Radiation Beam"
+      ],
+      "tier": "A",
+      "why": "Commonsense pairs Holy Laser with Radiation Beam; radiation amps laser damage",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "holy-laser+frozen-flame",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Frozen Flame"
+      ],
+      "tier": "A",
+      "why": "Commonsense pairs these; frostburn raises damage taken from the lasers",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "mosquito-king+vampire-lord",
+      "kind": "fusion",
+      "balls": [
+        "Mosquito King",
+        "Vampire Lord"
+      ],
+      "tier": "A",
+      "why": "Commonsense calls this very strong; bleed + mosquito healing; both Nosferatu parents",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "mosquito-kingdom+holy-laser",
+      "kind": "fusion",
+      "balls": [
+        "Mosquito Kingdom",
+        "Holy Laser"
+      ],
+      "tier": "A",
+      "why": "Own judgment: on-hit mosquitos plus row/column lasers, damage and sustain",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution",
+        "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "sun+mosquito-king",
+      "kind": "fusion",
+      "balls": [
+        "Sun",
+        "Mosquito King"
+      ],
+      "tier": "A",
+      "why": "Own judgment: Sun's screen-wide burn/blind with Mosquito King damage and healing",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "spider-queen+nuclear-bomb",
+      "kind": "fusion",
+      "balls": [
+        "Spider Queen",
+        "Nuclear Bomb"
+      ],
+      "tier": "A",
+      "why": "Waves: Spider Queen's egg sacs multiply nuke explosions; recommended nuke + spawner pairing",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+flicker",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Flicker"
+      ],
+      "tier": "A",
+      "why": "Timer pulses stack Bleed screen-wide (12 stacks in ~3.6s); 'great for bosses' per Steam, slower than Flash",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qvjyhm/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oki9qr/_/nmb8fyq/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qnyfij/_/o1yt31w/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole+flash",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Flash"
+      ],
+      "tier": "A",
+      "why": "Waves: each Flash hit triggers Black Hole's instakill on the whole screen; players note it is weak on bosses",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oup6hu/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qzovqj/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pxx3sg/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+sun",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Sun"
+      ],
+      "tier": "A",
+      "why": "Bosses: Sun spreads Hemorrhage bleed to all enemies in view; one player's highest-DPS fusion",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qvjyhm/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1t1qvfx/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "overgrowth+sun",
+      "kind": "fusion",
+      "balls": [
+        "Overgrowth",
+        "Sun"
+      ],
+      "tier": "A",
+      "why": "Waves: Sun stacks Overgrowth on everything in view for chained 3x3 blasts; called 'super broken' with Sisyphus",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Maggot"
+      ],
+      "tier": "A",
+      "why": "Bosses/endless: maggot baby balls carry Hemorrhage bleed; main damage source in several endless builds",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1rvaqlv/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qy1cf7/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1rhny1o/_/o802uiq/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+dark",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Dark"
+      ],
+      "tier": "A",
+      "why": "Bosses: very high single-target damage, reported to delete bosses (~40k DPS on Sisyphus, pre-Cohabitants fix)",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1opz8vi/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oay9g8/_/nkf58vr/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1obbak2/_/nkgzcb4/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+mosquito-swarm",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Mosquito Swarm"
+      ],
+      "tier": "A",
+      "why": "Waves: nuke hits release homing mosquitos for follow-up damage; described as 'radical' and very effective",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1p0sr6d/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pod8h7/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pt6hx3/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "flash+succubus",
+      "kind": "fusion",
+      "balls": [
+        "Flash",
+        "Succubus"
+      ],
+      "tier": "A",
+      "why": "General/survival: charms the whole board so enemies fight each other; strong in endless and against add-heavy bosses",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "laser-cutter+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Laser Cutter",
+        "Maggot"
+      ],
+      "tier": "A",
+      "why": "Reddit: highly upvoted build (score 99) on r/BALLxPIT",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1qnpzia/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1rf8gqf/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1u9uj3u/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole+satan",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Satan"
+      ],
+      "tier": "A",
+      "why": "Reddit: wave clear, recommended by several r/BALLxPIT posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1omtgkw/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ve6es1/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pqsoiq/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+spider-queen",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Spider Queen"
+      ],
+      "tier": "A",
+      "why": "Reddit: boss killer, spiders spread bleed",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1qw1ook/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1rlpljv/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qv6q6i/_/o3hygax/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "freeze-ray+spider-queen",
+      "kind": "fusion",
+      "balls": [
+        "Freeze Ray",
+        "Spider Queen"
+      ],
+      "tier": "A",
+      "why": "Reddit: highly upvoted build (score 72) on r/BALLxPIT",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1qnz4al/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1phhrno/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "x-ray+maggot",
+      "kind": "fusion",
+      "balls": [
+        "X Ray",
+        "Maggot"
+      ],
+      "tier": "B",
+      "why": "Own judgment: extends the Holy Laser x Maggot idea with X Ray's radiation lasers. Reddit: one player found it disappointing",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution",
+        "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics",
+        "https://www.reddit.com/r/BALLxPIT/comments/1t1qvfx/_/ojif65a/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+cell",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Cell"
+      ],
+      "tier": "B",
+      "why": "Waves: cloned nukes chain explosions across the board; 'self-multiplying nukes'. Reddit: mixed reports",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://www.youtube.com/watch?v=rOMZyXtd2Ts",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qyowvz/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1olqaz4/_/nmkbo16/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1plycxm/_/nu4je3f/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "radiation-beam",
+      "kind": "evolution",
+      "ball": "Radiation Beam",
+      "tier": "B",
+      "why": "Beam applies stacking radiation (damage taken up); Commonsense A, Dexerto B",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "vampire-lord",
+      "kind": "evolution",
+      "ball": "Vampire Lord",
+      "tier": "B",
+      "why": "Bleed on hit, heals on heavy bleed; PCGamesN A, Commonsense S, Dexerto D",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "phantom",
+      "kind": "evolution",
+      "ball": "Phantom",
+      "tier": "B",
+      "why": "Curse bursts after repeated hits; Dexerto A, Commonsense C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "wraith",
+      "kind": "evolution",
+      "ball": "Wraith",
+      "tier": "B",
+      "why": "Freezes enemies it passes through; Dexerto A, Commonsense C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "soul-sucker",
+      "kind": "evolution",
+      "ball": "Soul Sucker",
+      "tier": "B",
+      "why": "Pierces, steals health and lowers enemy attack; Dexerto A, Commonsense B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "blizzard",
+      "kind": "evolution",
+      "ball": "Blizzard",
+      "tier": "B",
+      "why": "Freezes and damages a small radius; Dexerto A, PCGamesN B, Commonsense C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "voluptuous-egg-sac",
+      "kind": "evolution",
+      "ball": "Voluptuous Egg Sac",
+      "tier": "B",
+      "why": "Splits into 2-3 egg sacs; Dexerto A, Commonsense C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "brimstone",
+      "kind": "evolution",
+      "ball": "Brimstone",
+      "tier": "B",
+      "why": "Burn + poison aura on nearby enemies; Dexerto A but slow buildup and stack cap",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "fireworks",
+      "kind": "evolution",
+      "ball": "Fireworks",
+      "tier": "B",
+      "why": "Random-target bursts spread burn; Dexerto A, low upfront damage",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "leech",
+      "kind": "evolution",
+      "ball": "Leech",
+      "tier": "B",
+      "why": "Attaches and keeps stacking bleed; PCGamesN A, Commonsense B, Dexerto C",
+      "sources": [
+        "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "banished-flame",
+      "kind": "evolution",
+      "ball": "Banished Flame",
+      "tier": "B",
+      "why": "Darkflame stacks burst on expiry; Dexerto B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "catapult",
+      "kind": "evolution",
+      "ball": "Catapult",
+      "tier": "B",
+      "why": "Lobs stone baby balls on a timer; Dexerto B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "flash",
+      "kind": "evolution",
+      "ball": "Flash",
+      "tier": "B",
+      "why": "Hits all on-screen enemies and blinds after a hit; Dexerto/Commonsense B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "freeze-ray",
+      "kind": "evolution",
+      "ball": "Freeze Ray",
+      "tier": "B",
+      "why": "Freeze ray on hit along its path; Dexerto B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "erosion",
+      "kind": "evolution",
+      "ball": "Erosion",
+      "tier": "B",
+      "why": "Unrated; own judgment: piercing with bonus damage by current health, good vs bosses",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "sniper",
+      "kind": "evolution",
+      "ball": "Sniper",
+      "tier": "B",
+      "why": "Unrated; own judgment: piercing plus sniper babies off walls, costly 2-evo recipe",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "time-bomb",
+      "kind": "evolution",
+      "ball": "Time Bomb",
+      "tier": "B",
+      "why": "Unrated; own judgment: delayed AOE bombs, weaker than Nuclear Bomb path",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "timestop",
+      "kind": "evolution",
+      "ball": "Timestop",
+      "tier": "B",
+      "why": "Unrated; own judgment: 5s field-wide freeze is great control but self-destructs",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "venom",
+      "kind": "evolution",
+      "ball": "Venom",
+      "tier": "B",
+      "why": "Unrated; own judgment: stacking DoT plus slow, decent but no AOE",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "drill",
+      "kind": "evolution",
+      "ball": "Drill",
+      "tier": "B",
+      "why": "Unrated (Naturalist); own judgment: pierces with bonus damage to the back wall",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "tumor",
+      "kind": "evolution",
+      "ball": "Tumor",
+      "tier": "B",
+      "why": "Unrated (Naturalist); own judgment: tumors kill regular enemies after 40s, slow",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "lightning-bug",
+      "kind": "evolution",
+      "ball": "Lightning Bug",
+      "tier": "B",
+      "why": "Unrated (Naturalist); own judgment: zapping bug per hit, spawner synergy",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "flesh-mound",
+      "kind": "evolution",
+      "ball": "Flesh Mound",
+      "tier": "B",
+      "why": "Unrated (Naturalist); own judgment: steady stream of baby balls each second",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "elemental",
+      "kind": "evolution",
+      "ball": "Elemental",
+      "tier": "B",
+      "why": "Unrated (Naturalist); own judgment: random burn/slow/freeze nearby, 4-ball cost",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "magma+sandstorm",
+      "kind": "fusion",
+      "balls": [
+        "Magma",
+        "Sandstorm"
+      ],
+      "tier": "B",
+      "why": "Own judgment: two top-rated area balls; blind storm plus lava pools",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "sun+frozen-flame",
+      "kind": "fusion",
+      "balls": [
+        "Sun",
+        "Frozen Flame"
+      ],
+      "tier": "B",
+      "why": "Own judgment: frostburn raises damage taken from Sun's screen-wide burn",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+ghost",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Ghost"
+      ],
+      "tier": "B",
+      "why": "General: piercing nuke ('armageddon machine gun'), best with Empty Nester",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+voluptuous-egg-sac",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Voluptuous Egg Sac"
+      ],
+      "tier": "B",
+      "why": "General: egg sacs multiply nuke explosions; slow but effective, better on bosses than Maggot Nuke",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1sh1z9j/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ogs50v/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "bomb+dark",
+      "kind": "fusion",
+      "balls": [
+        "Bomb",
+        "Dark"
+      ],
+      "tier": "B",
+      "why": "Bosses/early: cheap early fusion hitting ~3k per explosion that can carry pre-NG+ stages",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ozx4vp/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oijuk0/_/nm90bzi/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+shotgun",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Shotgun"
+      ],
+      "tier": "B",
+      "why": "Waves: shotgun baby balls spray extra nukes late in a run",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1og0pal/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1omt6lc/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nuclear-bomb+satan",
+      "kind": "fusion",
+      "balls": [
+        "Nuclear Bomb",
+        "Satan"
+      ],
+      "tier": "B",
+      "why": "General: Satan's screen-wide burn/berserk on top of nuke AOE; video showcase only",
+      "sources": [
+        "https://www.youtube.com/watch?v=OAIp3MwA5W4",
+        "https://www.reddit.com/r/roguelites/comments/1ogylj1/_/nllb3yi/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+shotgun",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Shotgun"
+      ],
+      "tier": "B",
+      "why": "Bosses: Hemorrhage-infused iron baby balls 'shred' bosses in endless bleed builds",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "hemorrhage+cell",
+      "kind": "fusion",
+      "balls": [
+        "Hemorrhage",
+        "Cell"
+      ],
+      "tier": "B",
+      "why": "Bosses: clones spread bleed stacks for quick Hemorrhage bursts; slow start",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "holy-laser+overgrowth",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Overgrowth"
+      ],
+      "tier": "B",
+      "why": "Waves: row/column lasers stack Overgrowth for chained 3x3 blasts; a player favourite",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://www.reddit.com/r/roguelites/comments/1ogylj1/_/noxkr9r/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "holy-laser+voluptuous-egg-sac",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Voluptuous Egg Sac"
+      ],
+      "tier": "B",
+      "why": "Waves: egg sacs multiply laser-carrying balls for a 'light show'",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "radiation-beam+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Radiation Beam",
+        "Maggot"
+      ],
+      "tier": "B",
+      "why": "Waves: maggot baby balls fire radiation beams; good for early/mid trash, slow start",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ojs5dd/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "spider-queen+flicker",
+      "kind": "fusion",
+      "balls": [
+        "Spider Queen",
+        "Flicker"
+      ],
+      "tier": "B",
+      "why": "General: Flicker pulses on a ball that keeps birthing egg sacs; praised on Steam",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "glacier+spider-queen",
+      "kind": "fusion",
+      "balls": [
+        "Glacier",
+        "Spider Queen"
+      ],
+      "tier": "B",
+      "why": "General: spawned copies drop glacial spikes and keep enemies permafrosted",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "flicker+frozen-flame",
+      "kind": "fusion",
+      "balls": [
+        "Flicker",
+        "Frozen Flame"
+      ],
+      "tier": "B",
+      "why": "General: Flicker spreads frostburn screen-wide (slow, DoT, +25% damage taken)",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "succubus+sun",
+      "kind": "fusion",
+      "balls": [
+        "Succubus",
+        "Sun"
+      ],
+      "tier": "B",
+      "why": "Waves/survival: Sun spreads charm for crowd control that walls enemies in endless",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "reaper+nosferatu",
+      "kind": "fusion",
+      "balls": [
+        "Reaper",
+        "Nosferatu"
+      ],
+      "tier": "B",
+      "why": "General: instakill chance plus vampire bats and healing; YouTube showcase (Jun 2026)",
+      "sources": [
+        "https://www.youtube.com/watch?v=mnNT-YzTSnU"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "banshee+reaper",
+      "kind": "fusion",
+      "balls": [
+        "Banshee",
+        "Reaper"
+      ],
+      "tier": "B",
+      "why": "General: screen-wide curse plus instakill chance; one commenter claims 574k DPS",
+      "sources": [
+        "https://www.youtube.com/watch?v=ARqKAJ9nISs"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "flicker+leech",
+      "kind": "fusion",
+      "balls": [
+        "Flicker",
+        "Leech"
+      ],
+      "tier": "B",
+      "why": "Bosses: Flicker pulses on a leech-planting ball for heavy bleed stacking; 'nastiest build' on Sisyphus",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Maggot"
+      ],
+      "tier": "B",
+      "why": "Waves: maggot babies carry instakills; fun, but players rate Flash x Black Hole higher. Reddit: recommended by several posters",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qubiwe/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qutsg5/_/o3ckyoj/",
+        "https://www.reddit.com/r/NintendoSwitch/comments/1oorsry/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nosferatu+shotgun",
+      "kind": "fusion",
+      "balls": [
+        "Nosferatu",
+        "Shotgun"
+      ],
+      "tier": "B",
+      "why": "Reddit: recommended by several r/BALLxPIT posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1p0e7z6/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1sz9shy/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qprz17/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "black-hole+voluptuous-egg-sac",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Voluptuous Egg Sac"
+      ],
+      "tier": "B",
+      "why": "Reddit: wave clear (~5 posters)",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1qy1cf7/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "maggot+overgrowth",
+      "kind": "fusion",
+      "balls": [
+        "Maggot",
+        "Overgrowth"
+      ],
+      "tier": "B",
+      "why": "Reddit: endless pick",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1rk5qdn/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1s0tswe/_/obwrsvx/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "glacier+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Glacier",
+        "Maggot"
+      ],
+      "tier": "B",
+      "why": "Reddit: recommended, low-score posts",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1p8l9b3/_/nr7to2h/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1p5bdmm/_/nqmhl9j/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oijuk0/_/nm90bzi/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "maggot+magma",
+      "kind": "fusion",
+      "balls": [
+        "Maggot",
+        "Magma"
+      ],
+      "tier": "B",
+      "why": "Reddit: recommended by a few posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1oyxsix/_/np7o524/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oc6pjj/_/nkmrw2a/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "maggot+vampire-lord",
+      "kind": "fusion",
+      "balls": [
+        "Maggot",
+        "Vampire Lord"
+      ],
+      "tier": "B",
+      "why": "Reddit: recommended by a few posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1okvgtp/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1ogr968/_/nlikl8q/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "spider-queen+vampire-lord",
+      "kind": "fusion",
+      "balls": [
+        "Spider Queen",
+        "Vampire Lord"
+      ],
+      "tier": "B",
+      "why": "Reddit: recommended by a few posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1phw39x/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1osa6m7/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "blizzard+spider-queen",
+      "kind": "fusion",
+      "balls": [
+        "Blizzard",
+        "Spider Queen"
+      ],
+      "tier": "B",
+      "why": "Reddit: endless pick",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1orto8c/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qv6q6i/_/o3hygax/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "blizzard+voluptuous-egg-sac",
+      "kind": "fusion",
+      "balls": [
+        "Blizzard",
+        "Voluptuous Egg Sac"
+      ],
+      "tier": "B",
+      "why": "Reddit: endless pick",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1rvaqlv/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1qvjyhm/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "satan+hemorrhage",
+      "kind": "fusion",
+      "balls": [
+        "Satan",
+        "Hemorrhage"
+      ],
+      "tier": "C",
+      "why": "General: Satan's screen-wide burn/berserk spreads Hemorrhage, combining wave clear with boss damage. Reddit: reported bugged",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1t1qvfx/_/ojibb8j/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1stoyll/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "swamp",
+      "kind": "evolution",
+      "ball": "Swamp",
+      "tier": "C",
+      "why": "Tar pools slow and poison; Commonsense A, Dexerto C; low damage",
+      "sources": [
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "noxious",
+      "kind": "evolution",
+      "ball": "Noxious",
+      "tier": "C",
+      "why": "Piercing poison cloud; Dexerto B/C, Commonsense B; low impact",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "lovestruck",
+      "kind": "evolution",
+      "ball": "Lovestruck",
+      "tier": "C",
+      "why": "Lovestruck enemies heal you; utility only; Dexerto B, Commonsense C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "berserk",
+      "kind": "evolution",
+      "ball": "Berserk",
+      "tier": "C",
+      "why": "Chance to berserk enemies; Dexerto C, Commonsense B",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "sacrifice",
+      "kind": "evolution",
+      "ball": "Sacrifice",
+      "tier": "C",
+      "why": "Heavy bleed plus curse; Dexerto C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "virus",
+      "kind": "evolution",
+      "ball": "Virus",
+      "tier": "C",
+      "why": "Spreading disease DoT; Dexerto C",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "hemorrhage",
+      "kind": "evolution",
+      "ball": "Hemorrhage",
+      "tier": "C",
+      "why": "Bleed-consuming % damage; Dexerto D, Commonsense B; slow to set up",
+      "sources": [
+        "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
+        "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "warp",
+      "kind": "evolution",
+      "ball": "Warp",
+      "tier": "C",
+      "why": "Unrated; own judgment: random teleport and speed-up, unreliable damage",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "offspring",
+      "kind": "evolution",
+      "ball": "Offspring",
+      "tier": "C",
+      "why": "Unrated (Naturalist); own judgment: splits into clones on hits, little added effect",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "petrify",
+      "kind": "evolution",
+      "ball": "Petrify",
+      "tier": "C",
+      "why": "Unrated (Naturalist); own judgment: petrify on launch is control, not damage",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "zombie",
+      "kind": "evolution",
+      "ball": "Zombie",
+      "tier": "C",
+      "why": "Unrated (Naturalist); own judgment: chance of friendly zombies on death, RNG-heavy",
+      "sources": [
+        "https://ballxpit.wiki.gg/wiki/Evolution"
+      ]
+    },
+    {
+      "id": "black-hole+flicker",
+      "kind": "fusion",
+      "balls": [
+        "Black Hole",
+        "Flicker"
+      ],
+      "tier": "C",
+      "why": "Waves: should trigger Black Hole screen-wide, but one player reported it not working (maybe a bug)",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oypo5v/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oypo5v/_/np5xf66/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1og0pal/_/nld91ec/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "holy-laser+black-hole",
+      "kind": "fusion",
+      "balls": [
+        "Holy Laser",
+        "Black Hole"
+      ],
+      "tier": "C",
+      "why": "Waves: lasers 'one-shot everything they touch' (non-bosses only); single claim",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "flash+frozen-flame",
+      "kind": "fusion",
+      "balls": [
+        "Flash",
+        "Frozen Flame"
+      ],
+      "tier": "C",
+      "why": "General: stopgap that spreads frostburn on every hit",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "virus+sun",
+      "kind": "fusion",
+      "balls": [
+        "Virus",
+        "Sun"
+      ],
+      "tier": "C",
+      "why": "General: stopgap that spreads disease to everything in view",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "wraith+cell",
+      "kind": "fusion",
+      "balls": [
+        "Wraith",
+        "Cell"
+      ],
+      "tier": "C",
+      "why": "Waves/NG+: clones freeze enemies to stabilise high NG+; weak on bosses since they can't be frozen",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "blizzard+soul-sucker",
+      "kind": "fusion",
+      "balls": [
+        "Blizzard",
+        "Soul Sucker"
+      ],
+      "tier": "C",
+      "why": "Survival: crowd-control slow/freeze plus lifesteal in endless setups",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nosferatu+voluptuous-egg-sac",
+      "kind": "fusion",
+      "balls": [
+        "Nosferatu",
+        "Voluptuous Egg Sac"
+      ],
+      "tier": "C",
+      "why": "Survival: huge healing in endless; little damage",
+      "sources": [
+        "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1oaa706/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1r9b60c/_/o6c76yr/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "nosferatu+satan",
+      "kind": "fusion",
+      "balls": [
+        "Nosferatu",
+        "Satan"
+      ],
+      "tier": "C",
+      "why": "General: big healing and screen burn, but needs ~10 balls and great luck; weak on bosses. Reddit: \"DPS was absolutely not worth it\"",
+      "sources": [
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
+        "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1pc7ph0/",
+        "https://www.reddit.com/r/BALLxPIT/comments/1r9b60c/_/o6c76yr/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "cell+spider-queen",
+      "kind": "fusion",
+      "balls": [
+        "Cell",
+        "Spider Queen"
+      ],
+      "tier": "C",
+      "why": "Reddit: one recommendation",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1qo5n8f/_/o1zbmca/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "cell+maggot",
+      "kind": "fusion",
+      "balls": [
+        "Cell",
+        "Maggot"
+      ],
+      "tier": "C",
+      "why": "Reddit: one recommendation",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1rhny1o/_/o807kda/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "cell+iron",
+      "kind": "fusion",
+      "balls": [
+        "Cell",
+        "Iron"
+      ],
+      "tier": "C",
+      "why": "Reddit: ~3 posters",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1pfrlq7/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "brood-mother+laser-horizontal",
+      "kind": "fusion",
+      "balls": [
+        "Brood Mother",
+        "Laser (Horizontal)"
+      ],
+      "tier": "C",
+      "why": "Reddit: one post (score 56) says \"Laser\"; orientation guessed",
+      "sources": [
+        "https://www.reddit.com/r/BALLxPIT/comments/1otb9ig/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "ghost+laser-horizontal",
+      "kind": "fusion",
+      "balls": [
+        "Ghost",
+        "Laser (Horizontal)"
+      ],
+      "tier": "C",
+      "why": "Reddit: \"Ghost transfused with any of the AOE balls goes crazy, esp horizontal laser\"",
+      "sources": [
+        "https://www.reddit.com/r/roguelites/comments/1ovjdrl/_/nokda8j/",
+        "https://www.reddit.com/r/Games/comments/1o7gax0/_/njrrouj/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "magma+sun",
+      "kind": "fusion",
+      "balls": [
+        "Magma",
+        "Sun"
+      ],
+      "tier": "C",
+      "why": "Reddit: one poster, big damage on a Shield Bearer build",
+      "sources": [
+        "https://www.reddit.com/r/roguelites/comments/1o85rf6/_/nkxd11s/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "inferno+lightning",
+      "kind": "fusion",
+      "balls": [
+        "Inferno",
+        "Lightning"
+      ],
+      "tier": "C",
+      "why": "Reddit: one poster, AoE that burns and shocks",
+      "sources": [
+        "https://www.reddit.com/r/roguelites/comments/1o92x40/_/nk32qsi/"
+      ],
+      "unverified": true
+    },
+    {
+      "id": "bleed+steel",
+      "kind": "fusion",
+      "balls": [
+        "Bleed",
+        "Steel"
+      ],
+      "tier": "C",
+      "why": "Reddit: one poster, boss damage",
+      "sources": [
+        "https://www.reddit.com/r/roguelites/comments/1twimvf/_/opp2p16/"
+      ],
+      "unverified": true
+    }
+  ]
+}
