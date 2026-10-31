@@ -1,4 +1,4 @@
-# Pit Planner
+# BallxPit Planner
 
 A local helper for BALL x PIT ball evolutions.
 

@@ -38,7 +38,7 @@
 {:else}
   <main>
     <nav>
-      <strong class="brand">Pit Planner</strong>
+      <strong class="brand">BallxPit Planner</strong>
       <span class="muted">{run.slots} ball slots</span>
       <button class="ghost" onclick={() => dispatch({ type: 'setSlots', slots: null })}>change</button>
       {#if run.held.length}<button class="ghost" onclick={() => dispatch({ type: 'newRun' })}>new run</button>{/if}

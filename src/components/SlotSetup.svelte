@@ -4,7 +4,7 @@
 </script>
 
 <div class="setup">
-  <h1>Pit Planner</h1>
+  <h1>BallxPit Planner</h1>
   <p class="muted">How many ball slots do you have this run?</p>
   <div class="opts">
     {#each options as n (n)}
