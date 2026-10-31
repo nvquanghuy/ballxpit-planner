@@ -3,6 +3,7 @@
   import { allBalls, icon } from '../lib/data';
   import type { OfferAdvice, OfferResult } from '../lib/offers';
   import { balltip, type TipDirection } from '../lib/tip.svelte';
+  import { comboFor } from '../lib/roleEdits.svelte';
 
   let {
     owned,
@@ -185,10 +186,12 @@
     {#if advice.directions.length}
       <ul class="dirs">
         {#each allDirs ? advice.directions : advice.directions.slice(0, SHOW) as d (d.entry.id)}
+          {@const combo = comboFor(d.entry)}
           <li>
             <button class="dir" onclick={() => onopen(d.entry.id)}>
               <span class="tier tier-{d.entry.tier}">{d.entry.tier}</span>
               <strong class="label">{d.label}</strong>
+              {#if combo}<span class="combo" title="One part spreads (enabler/babymaker), the other carries the payload (effect/executioner): the pattern behind most top fusions">{combo}</span>{/if}
               <span class="muted need">need {d.before} → {d.picks[0].after}</span>
               <span class="picks">
                 {#each d.picks as p (p.ball)}<img class="icon sm" src={icon(p.ball)} alt={p.ball} title={p.ball} />{/each}

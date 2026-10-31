@@ -67,3 +67,36 @@ h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .balltip { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+
+/* Role tags: one hue per role, from the palette above. */
+:root {
+  --role-enabler: var(--accent);
+  --role-babymaker: color-mix(in srgb, var(--accent) 45%, var(--bad));
+  --role-effect: var(--warn);
+  --role-executioner: var(--bad);
+  --role-hitter: var(--tier-a);
+  --role-control: var(--tier-b);
+  --role-sustain: var(--good);
+  --role-amplifier: color-mix(in srgb, var(--good) 50%, var(--tier-b));
+}
+.role-enabler { --c: var(--role-enabler); }
+.role-babymaker { --c: var(--role-babymaker); }
+.role-effect { --c: var(--role-effect); }
+.role-executioner { --c: var(--role-executioner); }
+.role-hitter { --c: var(--role-hitter); }
+.role-control { --c: var(--role-control); }
+.role-sustain { --c: var(--role-sustain); }
+.role-amplifier { --c: var(--role-amplifier); }
+.role {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11px; line-height: 16px; padding: 0 5px; border-radius: 4px;
+  color: color-mix(in srgb, var(--c, var(--muted)) 75%, var(--text));
+  background: color-mix(in srgb, var(--c, var(--muted)) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c, var(--muted)) 35%, transparent);
+}
+button.role { cursor: pointer; }
+button.role:hover { border-color: var(--c, var(--accent)); }
+.role[aria-pressed='true'] { background: color-mix(in srgb, var(--c, var(--accent)) 32%, transparent); border-color: var(--c, var(--accent)); color: var(--text); }
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--c, var(--muted)); flex-shrink: 0; }
+/* Fusion pattern hint: spreader + payload. */
+.combo { font-size: 11px; line-height: 16px; padding: 0 5px; border-radius: 4px; white-space: nowrap; color: var(--muted); border: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent); }

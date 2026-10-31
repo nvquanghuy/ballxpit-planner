@@ -1,8 +1,11 @@
 <script lang="ts">
+  import { flushSync } from 'svelte';
   import { allBalls, ballInfo, icon, targets } from '../lib/data';
   import { evolvesInto, fusionFor, fusionsOf, leadsTo } from '../lib/ballInfo';
   import { fusionName } from '../lib/planner';
   import { cancelClose, closeSoon, closeTip, tip } from '../lib/tip.svelte';
+  import { ROLE_INFO, ROLES, VS, type Role, type Vs } from '../lib/roles';
+  import { resetRoles, roleEdits, roleOf, setRoles } from '../lib/roleEdits.svelte';
 
   let panel = $state<HTMLElement>();
   let pos = $state<{ x: number; y: number } | null>(null);
@@ -13,6 +16,27 @@
   const FUSE_CAP = 6;
   const LEAD_CAP = 5;
   const dmg = (b: { damageType: string[] }) => b.damageType.filter((t) => t !== 'Base');
+
+  // Role editing: one ball at a time, closed whenever the popover moves to another anchor.
+  let editing = $state<string | null>(null);
+  $effect(() => {
+    void tip.anchor;
+    editing = null;
+  });
+  const startEdit = (name: string) => {
+    editing = name;
+    flushSync();
+    // the edit row makes the panel taller: nudge it up rather than re-place it (which could flip it off the pointer)
+    if (!panel || !pos) return;
+    const max = innerHeight - panel.getBoundingClientRect().height - 8;
+    if (pos.y > max) pos = { ...pos, y: Math.max(8, max) };
+  };
+  const toggleRole = (name: string, r: Role) => {
+    const t = roleOf(name);
+    const roles = t?.roles ?? [];
+    setRoles(name, { roles: roles.includes(r) ? roles.filter((x) => x !== r) : [...roles, r], vs: t?.vs });
+  };
+  const setVs = (name: string, vs: Vs) => setRoles(name, { roles: roleOf(name)?.roles ?? [], vs });
 
   $effect(() => {
     const a = tip.anchor;
@@ -78,6 +102,8 @@
       {@const uses = evolvesInto(allBalls, b.name)}
       {@const fuses = fusionsOf(targets, b.name)}
       {@const leads = leadsTo(allBalls, targets, b.name)}
+      {@const tag = roleOf(b.name)}
+      {@const edited = b.name in roleEdits}
       <section>
         <header>
           <img class="icon" src={b.img} alt="" />
@@ -86,7 +112,37 @@
             <span class="kind" class:evo={!!b.parents}>{b.parents ? 'evolved' : 'base'}</span>
           </div>
         </header>
+        <div class="roles">
+          {#if editing === b.name}
+            {@const on = tag?.roles ?? []}
+            {#each ROLES as r (r)}
+              <!-- 1-3 roles, as in roles.json, so an export always merges cleanly -->
+              {@const stuck = on.includes(r) ? on.length === 1 : on.length >= 3}
+              <button class="role role-{r}" aria-pressed={on.includes(r)} disabled={stuck} title={stuck ? (on.length === 1 ? 'Keep at least one role' : 'At most 3 roles') : ROLE_INFO[r]} onclick={() => toggleRole(b.name, r)}>{r}</button>
+            {/each}
+            <span class="vspick">
+              <span class="muted">vs</span>
+              {#each VS as v (v)}<button class="role" aria-pressed={tag?.vs === v} disabled={!on.length} title={on.length ? undefined : 'Pick a role first'} onclick={() => setVs(b.name, v)}>{v}</button>{/each}
+            </span>
+            <span class="acts">
+              {#if edited}<button class="ghost mini" title="Back to the researched tags" onclick={() => resetRoles(b.name)}>reset</button>{/if}
+              <button class="ghost mini" onclick={() => (editing = null)}>done</button>
+            </span>
+          {:else}
+            {#each tag?.roles ?? [] as r (r)}<span class="role role-{r}" title={ROLE_INFO[r]}>{r}</span>{/each}
+            {#if tag?.vs}<span class="vs">vs {tag.vs}</span>{/if}
+            {#if !tag?.roles.length}<span class="muted">no role tags</span>{/if}
+            <span class="acts">
+              {#if edited}
+                <span class="edited" title="Your edit: overrides the researched tags">edited</span>
+                <button class="ghost mini" title="Back to the researched tags" onclick={() => resetRoles(b.name)}>reset</button>
+              {/if}
+              <button class="ghost mini" title="Change this ball's roles (saved in this browser)" onclick={() => startEdit(b.name)}>edit roles</button>
+            </span>
+          {/if}
+        </div>
         <p class="desc">{b.description}</p>
+        {#if tag?.why && !fusion && editing !== b.name}<p class="muted rwhy"><span class="lbl">Role</span> {tag.why}</p>{/if}
         {#if fusion}
           <!-- component of a fusion: description only, the fusion is the story -->
         {:else if tip.directions}
@@ -231,5 +287,18 @@
   .unlock { margin: 0; font-size: 12px; }
   .final { margin: 0; font-size: 12px; }
   .more { font-size: 12px; }
+  .roles .role[aria-pressed='false'] { opacity: 0.4; }
+  .roles .role:disabled { cursor: default; border-color: color-mix(in srgb, var(--c, var(--muted)) 35%, transparent); }
+  .roles .role[aria-pressed='false']:disabled { opacity: 0.2; }
+  .roles { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .vs { font-size: 11px; color: var(--muted); }
+  .vspick { display: inline-flex; align-items: center; gap: 4px; }
+  .vspick .muted { font-size: 11px; }
+  .acts { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; }
+  .edited { font-size: 11px; color: var(--warn); }
+  .mini { padding: 0 5px; font-size: 11px; border: none; color: var(--muted); }
+  .mini:hover { color: var(--text); }
+  .rwhy { margin: 0; font-size: 12px; }
+  .rwhy .lbl { width: auto; margin-right: 2px; }
   .tier.sm { width: 16px; height: 16px; font-size: 11px; border-radius: 4px; }
 </style>

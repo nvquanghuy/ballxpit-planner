@@ -3,6 +3,7 @@
   import { isReady, type Plan } from '../lib/planner';
   import { TIERS, type Suggestion, type Tier } from '../lib/targets';
   import { balltip } from '../lib/tip.svelte';
+  import { comboFor } from '../lib/roleEdits.svelte';
   import TargetIcon from './TargetIcon.svelte';
 
   let {
@@ -54,6 +55,7 @@
   <ul>
     {#each shown as s (s.entry.id)}
       {@const ready = isReady(s.plan)}
+      {@const combo = comboFor(s.entry)}
       <li>
         <button class="card" class:nofit={!s.plan.fits} class:ready onclick={() => onopen(s.entry.id)}>
           <TargetIcon target={s.entry} size="lg" />
@@ -62,6 +64,7 @@
               <span class="tier tier-{s.entry.tier}">{s.entry.tier}</span>
               <strong>{s.label}</strong>
               {#if s.entry.unverified}<span class="tag">unverified</span>{/if}
+              {#if combo}<span class="combo" title="One part spreads (enabler/babymaker), the other carries the payload (effect/executioner): the pattern behind most top fusions">{combo}</span>{/if}
             </div>
             <div class="row">
               {#if s.plan.have.length}

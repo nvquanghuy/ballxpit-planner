@@ -1,0 +1,690 @@
+{
+  "generatedAt": "2026-10-31",
+  "balls": {
+    "Bleed": {
+      "roles": [
+        "effect"
+      ],
+      "vs": "both",
+      "why": "2 bleed stacks per hit (max 8); every later ball hit on the enemy deals +1 per stack"
+    },
+    "Brood Mother": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "25% chance per hit to birth a baby ball that carries the partner's on-hit"
+    },
+    "Burn": {
+      "roles": [
+        "effect"
+      ],
+      "vs": "both",
+      "why": "Stacking burn (max 3), 4-8 damage per stack per second"
+    },
+    "Cell": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Splits into a clone on hit, twice: more balls carrying the partner effect"
+    },
+    "Charm": {
+      "roles": [
+        "control"
+      ],
+      "vs": "waves",
+      "why": "4% per hit to charm an enemy for 5s; charmed units walk up and attack other enemies"
+    },
+    "Dark": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "bosses",
+      "why": "3x damage per hit, then self-destructs with a 3s cooldown; big single hits, Nuke x Dark boss pick"
+    },
+    "Earthquake": {
+      "roles": [
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Each hit damages every unit in a 3x3 square, spreading the partner's on-hit around"
+    },
+    "Egg Sac": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Bursts into 2-4 baby balls on hit (3s cooldown)"
+    },
+    "Freeze": {
+      "roles": [
+        "control",
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "4% to freeze for 5s; frozen enemies take 25% more damage"
+    },
+    "Ghost": {
+      "roles": [
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Passes through enemies, so one throw hits a whole line"
+    },
+    "Iron": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "bosses",
+      "why": "Double damage at 40% less speed; multiplies the partner's damage"
+    },
+    "Laser (Horizontal)": {
+      "roles": [
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Hits every enemy in the row for 9-18"
+    },
+    "Laser (Vertical)": {
+      "roles": [
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Hits every enemy in the column for 9-18"
+    },
+    "Light": {
+      "roles": [
+        "control"
+      ],
+      "vs": "both",
+      "why": "Blinds on hit for 3s: blinded enemies miss 50% of attacks"
+    },
+    "Lightning": {
+      "roles": [
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Each hit zaps up to 3 nearby enemies for 1-20"
+    },
+    "Stone": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "bosses",
+      "why": "300% damage on first hit, eroding 40% per hit (min 50%)"
+    },
+    "Poison": {
+      "roles": [
+        "effect"
+      ],
+      "vs": "both",
+      "why": "Stacking poison (max 5), 1-4 damage per stack per second for 6s"
+    },
+    "Time": {
+      "roles": [
+        "control"
+      ],
+      "vs": "both",
+      "why": "Leaves a 20s time snare on hit that freezes enemies inside it"
+    },
+    "Vampire": {
+      "roles": [
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "4.5% chance per hit to heal 1"
+    },
+    "Wind": {
+      "roles": [
+        "enabler",
+        "control"
+      ],
+      "vs": "waves",
+      "why": "Pierces enemies and slows them 30% for 5s, at 25% less damage"
+    },
+    "Assassin": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "bosses",
+      "why": "Ghosts through enemy fronts; backstabs deal +30% damage; players use it for boss burst"
+    },
+    "Banished Flame": {
+      "roles": [
+        "effect"
+      ],
+      "vs": "both",
+      "why": "Darkflame stacks to 6 (1-30/stack/s) and bursts for 1-100 when it expires"
+    },
+    "Banshee": {
+      "roles": [
+        "amplifier",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Curses every enemy on the field when launched; cursed take 150-300 after 6 hits"
+    },
+    "Berserk": {
+      "roles": [
+        "control"
+      ],
+      "vs": "waves",
+      "why": "30% per hit to berserk an enemy for 6s; it deals 15-24/s to adjacent enemies"
+    },
+    "Black Hole": {
+      "roles": [
+        "executioner"
+      ],
+      "vs": "waves",
+      "why": "Instakills first non-boss it hits, then self-destructs (7s cd); useless on bosses"
+    },
+    "Blizzard": {
+      "roles": [
+        "control",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Freezes all enemies within 2 tiles for 0.8s and deals 1-50"
+    },
+    "Bomb": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "both",
+      "why": "Explodes for 150-300 to nearby enemies (3s cooldown)"
+    },
+    "Brimstone": {
+      "roles": [
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Burn + poison stack every second on all enemies within 2 tiles (max 4)"
+    },
+    "Catapult": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Lobs 3-5 stone baby balls every 1.5s; they break on hitting anything"
+    },
+    "Erosion": {
+      "roles": [
+        "executioner",
+        "enabler"
+      ],
+      "vs": "bosses",
+      "why": "Pierces and deals 3% of current HP per hit; Reddit ranks it a boss killer near Hemorrhage"
+    },
+    "Fireworks": {
+      "roles": [
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Bursts into 3-6 fireworks at random enemies for 20-30 plus a burn stack"
+    },
+    "Flash": {
+      "roles": [
+        "enabler",
+        "control"
+      ],
+      "vs": "both",
+      "why": "Every hit pulses all enemies on screen for 1-3 and blinds 2s; spreads the partner's on-hit"
+    },
+    "Flicker": {
+      "roles": [
+        "enabler"
+      ],
+      "vs": "both",
+      "why": "Hits every enemy on screen every 1.4s, so partner effects land everywhere hands-free"
+    },
+    "Freeze Ray": {
+      "roles": [
+        "control",
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "On hit fires a ray: 20-50 to everything in its path, 10% to freeze 10s"
+    },
+    "Frozen Flame": {
+      "roles": [
+        "effect",
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "Frostburn stacks to 4 (8-12/stack/s, 20s) and makes enemies take 25% more damage"
+    },
+    "Glacier": {
+      "roles": [
+        "control",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Drops glacial spikes that deal 15-30 and freeze 2s, plus 6-12 aura damage"
+    },
+    "Heart Swallower": {
+      "roles": [
+        "sustain",
+        "control"
+      ],
+      "vs": "both",
+      "why": "40% per hit to steal 1 HP (once per enemy) and cut enemy attack by 20%"
+    },
+    "Hemorrhage": {
+      "roles": [
+        "executioner",
+        "effect"
+      ],
+      "vs": "bosses",
+      "why": "3 bleed per hit; at 12+ stacks consumes them for 20% of current HP (cap 9999)"
+    },
+    "Holy Laser": {
+      "roles": [
+        "hitter",
+        "enabler"
+      ],
+      "vs": "both",
+      "why": "Hits every enemy in its row and column for 24-36; consensus top evolution"
+    },
+    "Incubus": {
+      "roles": [
+        "control",
+        "amplifier"
+      ],
+      "vs": "waves",
+      "why": "4% charm for 9s; charmed enemies curse neighbours (100-200 after 5 hits)"
+    },
+    "Inferno": {
+      "roles": [
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "A burn stack every second on all enemies within 2 tiles, 3-7/stack/s"
+    },
+    "Landslide": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Self-destructs into a 5s landslide dealing 20-30/s within 2 tiles"
+    },
+    "Laser Beam": {
+      "roles": [
+        "hitter",
+        "control"
+      ],
+      "vs": "both",
+      "why": "Beam on hit deals 30-42 and blinds for 8s"
+    },
+    "Laser Cutter": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "both",
+      "why": "Constant forward laser dealing 100-150 per second"
+    },
+    "Leech": {
+      "roles": [
+        "effect"
+      ],
+      "vs": "bosses",
+      "why": "Attaches a leech that adds 2 bleed per second up to 24 stacks; no healing despite the name"
+    },
+    "Lightning Rod": {
+      "roles": [
+        "enabler",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Plants a rod; every 3s lightning hits up to 8 nearby enemies for 1-30"
+    },
+    "Lovestruck": {
+      "roles": [
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "Lovestruck enemies (20s) have 50% to heal you 5 when they attack"
+    },
+    "Maggot": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "waves",
+      "why": "Infested enemies burst into 1-2 baby balls on death; chains kills, weaker on lone bosses"
+    },
+    "Magma": {
+      "roles": [
+        "effect",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Lava blobs deal 15-30 and add burn (max 3), plus 6-12 aura damage"
+    },
+    "Mosquito King": {
+      "roles": [
+        "babymaker",
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "Spawns a mosquito per hit (80-120 to a random enemy); kills steal 1 HP"
+    },
+    "Mosquito Swarm": {
+      "roles": [
+        "babymaker",
+        "sustain"
+      ],
+      "vs": "waves",
+      "why": "Bursts into 3-6 mosquitos (80-120 each) that steal 1 HP on kill"
+    },
+    "Nosferatu": {
+      "roles": [
+        "babymaker",
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "Bat each bounce hits a random enemy for 132-176 and becomes a Vampire Lord"
+    },
+    "Noxious": {
+      "roles": [
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Pierces and puts 3 poison stacks on all enemies within 2 tiles"
+    },
+    "Nuclear Bomb": {
+      "roles": [
+        "hitter",
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "300-500 blast plus permanent radiation: +10% damage taken per stack (max 5)"
+    },
+    "Overgrowth": {
+      "roles": [
+        "effect",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "At 3 stacks bursts for 150-200 in a 3x3; top wave clear with Flash/Flicker/Sun"
+    },
+    "Phantom": {
+      "roles": [
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "Curses on hit; cursed enemies take 100-200 after being hit 5 times"
+    },
+    "Radiation Beam": {
+      "roles": [
+        "amplifier",
+        "hitter"
+      ],
+      "vs": "both",
+      "why": "Beam deals 24-48 and adds radiation: +10% damage taken per stack (max 5)"
+    },
+    "Reaper": {
+      "roles": [
+        "executioner",
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "10% instakill on impact, heals 5; Reddit says it kills bosses too (capped 9999)"
+    },
+    "Sacrifice": {
+      "roles": [
+        "effect",
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "4 bleed per hit (max 15) plus a curse: 50-100 after 5 hits"
+    },
+    "Sandstorm": {
+      "roles": [
+        "enabler",
+        "control"
+      ],
+      "vs": "waves",
+      "why": "Pierces with a storm aura dealing 10-20/s and blinding nearby enemies 3s"
+    },
+    "Satan": {
+      "roles": [
+        "enabler",
+        "effect",
+        "control"
+      ],
+      "vs": "both",
+      "why": "Every second burns (max 5) and berserks all active enemies on the field"
+    },
+    "Shotgun": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Fires 3-7 fast iron baby balls off walls; they break on hitting anything"
+    },
+    "Sniper": {
+      "roles": [
+        "babymaker",
+        "enabler"
+      ],
+      "vs": "both",
+      "why": "Pierces, and fires 3-7 piercing sniper baby balls after hitting a wall"
+    },
+    "Soul Sucker": {
+      "roles": [
+        "sustain",
+        "enabler",
+        "control"
+      ],
+      "vs": "both",
+      "why": "Pierces; 30% to steal 1 HP (once per enemy) and cut enemy attack 20%"
+    },
+    "Spider Queen": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "25% per hit to birth an Egg Sac, which bursts into more baby balls"
+    },
+    "Steel": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "bosses",
+      "why": "Double damage at half speed, +10% per hit up to 300%"
+    },
+    "Storm": {
+      "roles": [
+        "hitter",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Lightning strikes nearby enemies every second for 1-40"
+    },
+    "Succubus": {
+      "roles": [
+        "control",
+        "sustain"
+      ],
+      "vs": "waves",
+      "why": "4% charm for 9s; heals 1 when hitting a charmed enemy"
+    },
+    "Sun": {
+      "roles": [
+        "enabler",
+        "control",
+        "effect"
+      ],
+      "vs": "both",
+      "why": "Blinds all enemies in view and burns them every second; spreads the partner's on-hit"
+    },
+    "Swamp": {
+      "roles": [
+        "control",
+        "effect"
+      ],
+      "vs": "waves",
+      "why": "Tar blobs deal 15-30, slow 50% for 7s and stack poison (max 8)"
+    },
+    "Time Bomb": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Throws a delayed bomb every few seconds for 80-120 to nearby enemies"
+    },
+    "Timestop": {
+      "roles": [
+        "control"
+      ],
+      "vs": "both",
+      "why": "Freezes everything on the field for 5s, then self-destructs (30s cooldown)"
+    },
+    "Vampire Lord": {
+      "roles": [
+        "sustain",
+        "effect"
+      ],
+      "vs": "both",
+      "why": "3 bleed per hit; at 10+ stacks consumes them to heal 1"
+    },
+    "Venom": {
+      "roles": [
+        "effect",
+        "control"
+      ],
+      "vs": "bosses",
+      "why": "Venom stacks to 8 (3-6/stack/s) and slows; Reddit lists it as boss crowd control"
+    },
+    "Virus": {
+      "roles": [
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Disease stacks to 8 (3-6/stack/s) and spreads 15%/s to nearby enemies"
+    },
+    "Voluptuous Egg Sac": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Bursts into 2-3 Egg Sacs on hit, each bursting into more baby balls"
+    },
+    "Warp": {
+      "roles": [
+        "enabler"
+      ],
+      "vs": "both",
+      "why": "Teleports to a random spot after each hit and speeds up 5%, reaching more enemies"
+    },
+    "Wraith": {
+      "roles": [
+        "control",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Pierces and freezes every enemy it passes through for 0.8s"
+    },
+    "X Ray": {
+      "roles": [
+        "hitter",
+        "amplifier"
+      ],
+      "vs": "both",
+      "why": "X-shaped laser on hit for 50-75 plus radiation: +10% damage taken per stack"
+    },
+    "Flesh": {
+      "roles": [
+        "enabler"
+      ],
+      "vs": "both",
+      "why": "Speeds up 25% per bounce, so it lands far more hits per second"
+    },
+    "Drill": {
+      "roles": [
+        "hitter",
+        "enabler"
+      ],
+      "vs": "bosses",
+      "why": "Pierces with +50% damage until the back of the field; Drill x Erosion boss pick"
+    },
+    "Flesh Mound": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Emits a baby ball in a random direction every second"
+    },
+    "Lightning Bug": {
+      "roles": [
+        "babymaker",
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Spawns a bug per hit that zaps a random enemy and up to 3 nearby for 1-80"
+    },
+    "Mosquito Kingdom": {
+      "roles": [
+        "babymaker",
+        "sustain"
+      ],
+      "vs": "both",
+      "why": "1-2 mosquitos per hit (100-150 each); kills steal 2 HP"
+    },
+    "Offspring": {
+      "roles": [
+        "babymaker"
+      ],
+      "vs": "both",
+      "why": "Splits into a clone on hit, 4 times"
+    },
+    "Petrify": {
+      "roles": [
+        "control",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "On launch petrifies every enemy in its sightline 1.5s for 50-120"
+    },
+    "Tumor": {
+      "roles": [
+        "executioner"
+      ],
+      "vs": "waves",
+      "why": "Tumored non-boss enemies die after 40s; bosses immune, slow to pay off"
+    },
+    "Zombie": {
+      "roles": [
+        "control"
+      ],
+      "vs": "waves",
+      "why": "Infected enemies have 40% to rise as a friendly zombie on death"
+    },
+    "Elemental": {
+      "roles": [
+        "control",
+        "effect",
+        "enabler"
+      ],
+      "vs": "waves",
+      "why": "Each hit applies a random burn, slow or freeze to nearby enemies"
+    },
+    "Armageddon": {
+      "roles": [
+        "hitter"
+      ],
+      "vs": "waves",
+      "why": "Meteor shower on hit: 30-50/s within 3 tiles for 5s"
+    }
+  }
+}
