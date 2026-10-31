@@ -1,6 +1,6 @@
 <script lang="ts">
   import { icon } from '../lib/data';
-  import type { Plan } from '../lib/planner';
+  import { isReady, type Plan } from '../lib/planner';
   import type { TargetEntry } from '../lib/targets';
   import { balltip } from '../lib/tip.svelte';
   import TargetIcon from './TargetIcon.svelte';
@@ -12,12 +12,14 @@
     label,
     onback,
     oncycle,
+    ondone,
   }: {
     entry: TargetEntry;
     plan: Plan;
     label: string;
     onback: () => void;
     oncycle: (ball: string, next: number) => void;
+    ondone: () => void;
   } = $props();
 </script>
 
@@ -46,6 +48,9 @@
         </div>
       {:else}
         <p class="good">Nothing — you have every ingredient.</p>
+        {#if isReady(plan)}
+          <button class="do" onclick={ondone}>{entry.kind === 'fusion' ? 'Fuse' : 'Evolve'} now</button>
+        {/if}
       {/if}
     </div>
     <div class="peak">
@@ -63,7 +68,10 @@
     <h2>Steps</h2>
     <ol class="steps">
       {#if plan.startHeld}
-        <li class="muted">Start holding {plan.have.join(', ')} <span class="held">{plan.startHeld}/{plan.slots}</span></li>
+        <li class="muted">
+          Start holding {[...plan.have, ...(plan.reserved ? [`${plan.reserved} fused ball${plan.reserved > 1 ? 's' : ''}`] : [])].join(', ')}
+          <span class="held">{plan.startHeld}/{plan.slots}</span>
+        </li>
       {/if}
       {#each plan.steps as s, i (i)}
         <li class={s.kind}>
@@ -113,6 +121,7 @@
   .big { font-size: 28px; font-weight: 800; margin: 0; }
   .small { font-size: 12px; margin: 0; }
   .good { color: var(--good); margin: 0; }
+  .do { margin-top: 8px; padding: 4px 12px; font-size: 13px; font-weight: 600; border-color: var(--good); color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--panel)); }
   .bad { color: var(--bad); }
   .warnbox { margin: 0; padding: 10px; border: 1px solid var(--warn); border-radius: 8px; color: var(--warn); font-size: 14px; }
   .steps { margin: 8px 0 0; padding-left: 24px; display: grid; gap: 6px; }

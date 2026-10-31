@@ -1,5 +1,6 @@
 <script lang="ts">
   import { icon } from '../lib/data';
+  import { isReady, type Plan } from '../lib/planner';
   import { TIERS, type Suggestion, type Tier } from '../lib/targets';
   import { balltip } from '../lib/tip.svelte';
   import TargetIcon from './TargetIcon.svelte';
@@ -9,7 +10,15 @@
     showAll = $bindable(),
     hasOwned,
     onopen,
-  }: { items: Suggestion[]; showAll: boolean; hasOwned: boolean; onopen: (id: string) => void } = $props();
+    ondone,
+  }: {
+    items: Suggestion[];
+    showAll: boolean;
+    hasOwned: boolean;
+    onopen: (id: string) => void;
+    /** Carry out a ready plan: its owned balls become the result. */
+    ondone: (plan: Plan) => void;
+  } = $props();
 
   let tiers = $state<Tier[]>(['S', 'A']);
   let kind = $state<'all' | 'evolution' | 'fusion'>('all');
@@ -44,8 +53,9 @@
 
   <ul>
     {#each shown as s (s.entry.id)}
+      {@const ready = isReady(s.plan)}
       <li>
-        <button class="card" class:nofit={!s.plan.fits} onclick={() => onopen(s.entry.id)}>
+        <button class="card" class:nofit={!s.plan.fits} class:ready onclick={() => onopen(s.entry.id)}>
           <TargetIcon target={s.entry} size="lg" />
           <div class="body">
             <div class="title">
@@ -69,6 +79,11 @@
             </div>
           </div>
         </button>
+        {#if ready}
+          <button class="do" title="Assume you just did it: swap the ingredients in your balls for {s.label}" onclick={() => ondone(s.plan)}>
+            {s.entry.kind === 'fusion' ? 'Fuse' : 'Evolve'}
+          </button>
+        {/if}
       </li>
     {/each}
   </ul>
@@ -88,6 +103,10 @@
   ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
   .card { width: 100%; display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 10px; background: var(--panel); }
   .card.nofit { opacity: 0.5; }
+  /* The action sits beside the card, not inside it: a button can't hold a button. */
+  li { position: relative; }
+  .card.ready { padding-right: 80px; }
+  .do { position: absolute; top: 10px; right: 10px; padding: 4px 12px; font-size: 13px; font-weight: 600; border-color: var(--good); color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--panel)); }
   .body { display: grid; gap: 5px; min-width: 0; }
   .title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .tag { font-size: 11px; color: var(--warn); border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; }

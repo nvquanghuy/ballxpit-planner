@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import balls from '../data/balls.json';
-import { Catalog, plan, type Target } from './planner';
+import { applyPlan, Catalog, fusedParts, isReady, plan, type Target } from './planner';
 
 const cat = new Catalog(balls);
 const evo = (ball: string): Target => ({ kind: 'evolution', ball });
@@ -81,5 +81,63 @@ describe('plan', () => {
       const p = plan(cat, evo(b.name), { owned: ['Burn', 'Charm', 'Iron', 'Light'], slots: 4 });
       expect(p.steps.at(-1)?.ball).toBe(b.name);
     }
+  });
+});
+
+describe('fused balls in owned', () => {
+  const HS = 'Hemorrhage ⊕ Sun';
+
+  it('validates fused names', () => {
+    expect(cat.isValidOwned(HS)).toBe(true);
+    expect(cat.isValidOwned('Burn')).toBe(true);
+    expect(cat.isValidOwned('Sun ⊕ Dark')).toBe(false); // that pair evolves into Black Hole
+    expect(cat.isValidOwned('Sun ⊕ Sun')).toBe(false);
+    expect(cat.isValidOwned('Nope ⊕ Sun')).toBe(false);
+    expect(fusedParts(HS)).toEqual(['Hemorrhage', 'Sun']);
+  });
+
+  it('are never ingredients but take a slot', () => {
+    const base = plan(cat, evo('Nuclear Bomb'), { owned: ['Burn', 'Iron'], slots: 4 });
+    const p = plan(cat, evo('Nuclear Bomb'), { owned: ['Burn', 'Iron', HS], slots: 4 });
+    expect(p.have.sort()).toEqual(['Burn', 'Iron']);
+    expect(p.reserved).toBe(1);
+    expect(p.startHeld).toBe(3);
+    expect(p.peak).toBe(base.peak + 1);
+    expect(p.steps.map((s) => s.held)).toEqual(base.steps.map((s) => s.held + 1));
+  });
+
+  it('a plan that fit exactly no longer fits next to a fused ball', () => {
+    expect(plan(cat, evo('Elemental'), { owned: [], slots: 4 }).fits).toBe(true);
+    expect(plan(cat, evo('Elemental'), { owned: [HS], slots: 4 }).fits).toBe(false);
+  });
+});
+
+describe('applyPlan', () => {
+  it('evolves owned balls into the result', () => {
+    const p = plan(cat, evo('Nuclear Bomb'), { owned: ['Burn', 'Iron', 'Poison'], slots: 4 });
+    expect(isReady(p)).toBe(true);
+    expect(applyPlan(['Burn', 'Iron', 'Poison'], ['Iron'], p)).toEqual({ owned: ['Nuclear Bomb'], pinned: [] });
+  });
+
+  it('keeps unrelated balls and pins, putting the result where the first ingredient was', () => {
+    const owned = ['Wind', 'Burn', 'Iron', 'Poison'];
+    const p = plan(cat, evo('Nuclear Bomb'), { owned, slots: 4 });
+    expect(applyPlan(owned, ['Wind', 'Burn'], p)).toEqual({ owned: ['Wind', 'Nuclear Bomb'], pinned: ['Wind'] });
+  });
+
+  it('fuses two owned balls into a fused entry', () => {
+    const p = plan(cat, fuse('Hemorrhage', 'Sun'), { owned: ['Sun', 'Hemorrhage'], slots: 4 });
+    expect(isReady(p)).toBe(true);
+    expect(applyPlan(['Sun', 'Hemorrhage'], [], p).owned).toEqual(['Hemorrhage ⊕ Sun']);
+  });
+
+  it('does not duplicate a result you already hold', () => {
+    const owned = ['Nuclear Bomb', 'Burn', 'Iron', 'Poison'];
+    const p = plan(cat, evo('Nuclear Bomb'), { owned, slots: 4 });
+    expect(applyPlan(owned, [], p).owned).toEqual(['Nuclear Bomb']);
+  });
+
+  it('is not ready while something is missing', () => {
+    expect(isReady(plan(cat, evo('Nuclear Bomb'), { owned: ['Burn', 'Iron'], slots: 4 }))).toBe(false);
   });
 });

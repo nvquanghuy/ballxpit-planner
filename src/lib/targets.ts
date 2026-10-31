@@ -1,4 +1,4 @@
-import { Catalog, plan, targetLabel, type Plan, type Target } from './planner';
+import { Catalog, isFused, plan, targetLabel, type Plan, type Target } from './planner';
 
 export type Tier = 'S' | 'A' | 'B' | 'C';
 export const TIERS: Tier[] = ['S', 'A', 'B', 'C'];
@@ -50,10 +50,11 @@ export function suggest(
   opts: { owned: string[]; pinned: string[]; slots: number; showAll?: boolean },
 ): Suggestion[] {
   const out: Suggestion[] = [];
+  const usable = opts.owned.some((n) => !isFused(n)); // fused balls feed no recipe
   for (const entry of entries) {
     const p = plan(cat, entry, opts);
     if (opts.pinned.length && p.pinnedUnused.length) continue;
-    if (!opts.showAll && opts.owned.length && !p.have.length) continue;
+    if (!opts.showAll && usable && !p.have.length) continue;
     out.push({ entry, label: targetLabel(entry), plan: p });
   }
   return out.sort(

@@ -41,4 +41,10 @@ describe('suggest', () => {
     const s = suggest(cat, fake, { owned: ['Burn'], pinned: [], slots: 3 });
     expect(s.at(-1)?.entry.id).toBe('el');
   });
+
+  it('owning only fused balls lists everything, slot-checked with the fused slot taken', () => {
+    const s = suggest(cat, fake, { owned: ['Hemorrhage ⊕ Sun'], pinned: [], slots: 4 });
+    expect(s.map((x) => x.entry.id).sort()).toEqual(['el', 'nb', 'satan']);
+    expect(s.find((x) => x.entry.id === 'el')?.plan.fits).toBe(false);
+  });
 });

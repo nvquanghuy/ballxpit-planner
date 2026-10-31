@@ -13,6 +13,13 @@ const fake: TargetEntry[] = [
 ];
 
 describe('adviseOffers', () => {
+  it('fused balls take a slot but count as nothing owned', () => {
+    const a = adviseOffers(cat, fake, { owned: ['Hemorrhage ⊕ Sun', 'Burn', 'Iron', 'Wind'], pinned: [], slots: 4, offers: ['Poison'] });
+    expect(a.ranked[0].needsRoom).toBe(true);
+    const only = adviseOffers(cat, fake, { owned: ['Hemorrhage ⊕ Sun'], pinned: [], slots: 4, offers: ['Burn'] });
+    expect(only.ranked[0].effects.every((e) => !e.opens)).toBe(true);
+  });
+
   it('ranks the offer that finishes the best target first', () => {
     // Burn + Iron owned: Poison finishes Nuclear Bomb (S), Light finishes Sun (B).
     const a = adviseOffers(cat, fake, { owned: ['Burn', 'Iron'], pinned: [], slots: 4, offers: ['Light', 'Poison', 'Ghost'] });

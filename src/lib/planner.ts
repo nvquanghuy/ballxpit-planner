@@ -7,6 +7,7 @@
 // - Missing balls are acquired just-in-time, right before the evolve that consumes them.
 // - You can't hold two copies of the same ball at once (picking an owned ball levels it).
 // - Balls can be re-acquired after being consumed.
+// - Fused balls ("A ⊕ B") in owned can't be used again but still take a slot.
 
 export interface Ball {
   name: string;
@@ -40,6 +41,8 @@ export interface Plan {
   /** Intermediate + final evolutions made along the way. */
   via: string[];
   startHeld: number;
+  /** Slots taken by fused balls you hold; counted in startHeld, peak and every step's held. */
+  reserved: number;
   peak: number;
   slots: number;
   fits: boolean;
@@ -57,6 +60,10 @@ export interface PlanOptions {
 }
 
 export const fusionName = (a: string, b: string) => `${a} ⊕ ${b}`;
+const FUSE_SEP = ' ⊕ ';
+export const isFused = (name: string) => name.includes(FUSE_SEP);
+/** The two components of a fused ball name, in name order. */
+export const fusedParts = (name: string) => name.split(FUSE_SEP) as [string, string];
 
 export class Catalog {
   readonly byName = new Map<string, Ball>();
@@ -86,6 +93,13 @@ export class Catalog {
       }
     }
     return null;
+  }
+
+  /** A catalog ball, or a fused pair of catalog balls that may be fused. */
+  isValidOwned(name: string) {
+    if (!isFused(name)) return this.byName.has(name);
+    const parts = name.split(FUSE_SEP);
+    return parts.length === 2 && parts.every((p) => this.byName.has(p)) && this.fusionProblem(parts[0], parts[1]) === null;
   }
 }
 
@@ -155,23 +169,23 @@ interface Sim {
   duplicateConflicts: string[];
 }
 
-function simulate(order: Node[], startHeld: string[]): Sim {
+function simulate(order: Node[], startHeld: string[], reserved: number): Sim {
   const held = [...startHeld];
-  let peak = held.length;
+  let peak = held.length + reserved;
   const steps: Step[] = [];
   const duplicateConflicts: string[] = [];
   for (const n of order) {
     if (n.kind === 'acquire') {
       if (held.includes(n.ball)) duplicateConflicts.push(n.ball);
       held.push(n.ball);
-      steps.push({ kind: 'acquire', ball: n.ball, held: held.length });
+      steps.push({ kind: 'acquire', ball: n.ball, held: held.length + reserved });
     } else if (n.kind === 'evolve' || n.kind === 'fuse') {
       const from = n.children.map((c) => c.ball);
       for (const f of from) held.splice(held.indexOf(f), 1);
       held.push(n.ball);
-      steps.push({ kind: n.kind, ball: n.ball, from, held: held.length });
+      steps.push({ kind: n.kind, ball: n.ball, from, held: held.length + reserved });
     }
-    peak = Math.max(peak, held.length);
+    peak = Math.max(peak, held.length + reserved);
   }
   return { steps, peak, duplicateConflicts };
 }
@@ -179,7 +193,8 @@ function simulate(order: Node[], startHeld: string[]): Sim {
 const MAX_SIMS = 50_000;
 
 export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
-  const owned = new Set(opts.owned);
+  const owned = new Set(opts.owned.filter((n) => !isFused(n)));
+  const reserved = opts.owned.filter(isFused).length;
   const overrides = opts.recipeOverrides ?? {};
   const pinned = opts.pinned ?? [];
 
@@ -214,7 +229,7 @@ export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
 
     for (const order of orders(tree)) {
       if (++sims > MAX_SIMS && best) break;
-      const sim = simulate(order, uses);
+      const sim = simulate(order, uses, reserved);
       const fits = sim.peak <= opts.slots;
       const key = [pinnedUnused.length, needCount, sim.duplicateConflicts.length, fits ? 0 : 1, sim.peak, sim.steps.length];
       if (best && !lexLess(key, best.key)) continue;
@@ -228,7 +243,8 @@ export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
           need,
           needCount,
           via: sim.steps.filter((s) => s.kind === 'evolve').map((s) => s.ball),
-          startHeld: uses.length,
+          startHeld: uses.length + reserved,
+          reserved,
           peak: sim.peak,
           slots: opts.slots,
           fits,
@@ -246,5 +262,22 @@ function lexLess(a: number[], b: number[]) {
   for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i];
   return false;
 }
+
+/** Owned + pinned after carrying out a ready plan: its owned balls become the result, in place of the first. */
+export function applyPlan(owned: string[], pinned: string[], p: Plan): { owned: string[]; pinned: string[] } {
+  const left = [...owned];
+  let at = left.length;
+  for (const h of p.have) {
+    const i = left.indexOf(h);
+    if (i < 0) continue;
+    left.splice(i, 1);
+    at = Math.min(at, i);
+  }
+  if (!left.includes(p.target)) left.splice(at, 0, p.target); // a ball you already hold just levels up
+  return { owned: left, pinned: pinned.filter((n) => left.includes(n)) };
+}
+
+/** Every ingredient is in hand and the route fits: one click carries it out. */
+export const isReady = (p: Plan) => p.needCount === 0 && p.fits && !p.duplicateConflicts.length;
 
 export const targetLabel = (t: Target) => (t.kind === 'evolution' ? t.ball : fusionName(t.balls[0], t.balls[1]));

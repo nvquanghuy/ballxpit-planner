@@ -1,5 +1,5 @@
 // Level-up offers: which offered ball moves which target forward, and which to take.
-import { Catalog, plan, targetLabel, type Plan } from './planner';
+import { Catalog, isFused, plan, targetLabel, type Plan } from './planner';
 import { TIERS, type TargetEntry } from './targets';
 
 export interface Effect {
@@ -62,7 +62,7 @@ export function adviseOffers(
         label: targetLabel(entry),
         before: b.needCount,
         after: p.needCount,
-        opens: opts.owned.length > 0 && !b.have.length,
+        opens: opts.owned.some((n) => !isFused(n)) && !b.have.length,
         plan: p,
       });
     }

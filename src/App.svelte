@@ -1,6 +1,6 @@
 <script lang="ts">
   import { catalog, targets } from './lib/data';
-  import { plan, targetLabel } from './lib/planner';
+  import { applyPlan, isFused, plan, targetLabel, type Plan } from './lib/planner';
   import { suggest } from './lib/targets';
   import { adviseOffers } from './lib/offers';
   import { readHash, writeHash } from './lib/urlState';
@@ -13,8 +13,8 @@
 
   const init = readHash();
   let slots = $state<number | null>(init.slots);
-  let owned = $state<string[]>(init.owned.filter((n) => catalog.byName.has(n)));
-  let pinned = $state<string[]>(init.pinned.filter((n) => init.owned.includes(n)));
+  let owned = $state<string[]>([...new Set(init.owned)].filter((n) => catalog.isValidOwned(n)));
+  let pinned = $state<string[]>(init.pinned.filter((n) => owned.includes(n) && !isFused(n)));
   let targetId = $state<string | null>(init.target);
   let overrides = $state<Record<string, number>>(init.overrides);
   let offers = $state<string[]>(init.offers.filter((n) => catalog.byName.has(n)));
@@ -22,8 +22,10 @@
 
   $effect(() => writeHash({ slots, owned, pinned, target: targetId, overrides, offers }));
 
+  // fused balls take a slot but feed no recipe
+  const usable = $derived(owned.some((n) => !isFused(n)));
   const suggestions = $derived(
-    slots ? suggest(catalog, targets, { owned, pinned, slots, showAll: showAll || !owned.length }) : [],
+    slots ? suggest(catalog, targets, { owned, pinned, slots, showAll: showAll || !usable }) : [],
   );
 
   const advice = $derived(
@@ -48,6 +50,19 @@
     pinned = pinned.filter((x) => x !== n);
   };
   const togglePin = (n: string) => (pinned = pinned.includes(n) ? pinned.filter((x) => x !== n) : [...pinned, n]);
+  // Carry out a ready plan; the previous state stays undoable until owned changes again.
+  let undo = $state.raw<{ label: string; fused: boolean; owned: string[]; pinned: string[]; after: string[] } | null>(null);
+  const done = (p: Plan) => {
+    const prev = { owned, pinned };
+    ({ owned, pinned } = applyPlan(owned, pinned, p));
+    undo = { label: p.target, fused: p.tree.kind === 'fuse', ...prev, after: owned };
+    targetId = null;
+  };
+  const undoLast = () => {
+    if (!undo) return;
+    ({ owned, pinned } = undo);
+    undo = null;
+  };
   const open = (id: string) => {
     targetId = id;
     overrides = {};
@@ -66,6 +81,10 @@
       {#if owned.length}<button class="ghost" onclick={() => { owned = []; pinned = []; offers = []; }}>new run</button>{/if}
     </nav>
 
+    {#if undo && undo.after === owned}
+      <p class="done">{undo.fused ? 'Fused' : 'Evolved'} <strong>{undo.label}</strong> <button class="ghost" onclick={undoLast}>undo</button><button class="ghost" title="Dismiss" onclick={() => (undo = null)}>✕</button></p>
+    {/if}
+
     {#if selected && selectedPlan}
       <Breakdown
         entry={selected}
@@ -73,6 +92,7 @@
         label={targetLabel(selected)}
         onback={() => (targetId = null)}
         oncycle={(ball, next) => (overrides = { ...overrides, [ball]: next })}
+        ondone={() => done(selectedPlan)}
       />
     {:else}
       <div class="layout">
@@ -90,7 +110,7 @@
               onopen={open}
             />
           </div>
-          <Suggestions items={suggestions} bind:showAll hasOwned={owned.length > 0} onopen={open} />
+          <Suggestions items={suggestions} bind:showAll hasOwned={usable} onopen={open} ondone={(p) => done(p)} />
         </div>
       </div>
     {/if}
@@ -104,6 +124,10 @@
   nav { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
   .brand { margin-right: auto; font-size: 17px; letter-spacing: 0.02em; }
   nav button { padding: 2px 8px; font-size: 13px; }
+  .done { margin: -6px 0 0; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--good); }
+  .done strong { color: var(--text); }
+  .done button { padding: 2px 8px; font-size: 13px; }
+  .done button[title] { color: var(--muted); }
   /* Phones: the level-up tray goes above the ball grid. */
   .right { display: contents; }
   .offers-slot { order: -1; min-width: 0; }
