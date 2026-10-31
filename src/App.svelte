@@ -3,7 +3,7 @@
   import { applyPlan, isFused, plan, targetLabel, type Plan } from './lib/planner';
   import { suggest } from './lib/targets';
   import { adviseOffers } from './lib/offers';
-  import { readHash, writeHash } from './lib/urlState';
+  import { decodeHash, encodeHash } from './lib/urlCodec';
   import SlotSetup from './components/SlotSetup.svelte';
   import BallPicker from './components/BallPicker.svelte';
   import Suggestions from './components/Suggestions.svelte';
@@ -11,7 +11,7 @@
   import BallTip from './components/BallTip.svelte';
   import Offers from './components/Offers.svelte';
 
-  const init = readHash();
+  const init = decodeHash(location.hash);
   let slots = $state<number | null>(init.slots);
   let owned = $state<string[]>([...new Set(init.owned)].filter((n) => catalog.isValidOwned(n)));
   let pinned = $state<string[]>(init.pinned.filter((n) => owned.includes(n) && !isFused(n)));
@@ -20,7 +20,7 @@
   let offers = $state<string[]>(init.offers.filter((n) => catalog.byName.has(n)));
   let showAll = $state(false);
 
-  $effect(() => writeHash({ slots, owned, pinned, target: targetId, overrides, offers }));
+  $effect(() => history.replaceState(null, '', '#' + encodeHash({ slots, owned, pinned, target: targetId, overrides, offers })));
 
   // fused balls take a slot but feed no recipe
   const usable = $derived(owned.some((n) => !isFused(n)));
