@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { onpick }: { onpick: (slots: number) => void } = $props();
+  let { onpick, onabout }: { onpick: (slots: number) => void; onabout: () => void } = $props();
   const options = [2, 3, 4, 5, 6, 8];
 </script>
 
@@ -12,6 +12,7 @@
     {/each}
   </div>
   <p class="muted small">Most characters have 4. The Hoary Hoarder has 2, the Ballbearer 8.</p>
+  <button class="ghost aboutlink" onclick={onabout}>About this planner</button>
 </div>
 
 <style>
@@ -19,4 +20,6 @@
   .opts { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
   .opts button { width: 56px; height: 56px; font-size: 20px; font-weight: 700; }
   .small { font-size: 13px; }
+  .aboutlink { justify-self: center; font-size: 13px; color: var(--muted); }
+  .aboutlink:hover { color: var(--text); }
 </style>

@@ -11,9 +11,16 @@
   import Breakdown from './components/Breakdown.svelte';
   import BallTip from './components/BallTip.svelte';
   import Offers from './components/Offers.svelte';
+  import About from './components/About.svelte';
 
   const run = $derived(app.run);
   let showAll = $state(false);
+  // About is a view, not a route: the hash holds the run, so opening it changes nothing there.
+  let about = $state(false);
+  const showAbout = (on: boolean) => {
+    about = on;
+    scrollTo({ top: 0 });
+  };
 
   // fused balls take a slot but feed no recipe
   const usable = $derived(usableBalls(run.held).length > 0);
@@ -33,8 +40,10 @@
   };
 </script>
 
-{#if !run.slots}
-  <SlotSetup onpick={(n) => dispatch({ type: 'setSlots', slots: n })} />
+{#if about}
+  <About onback={() => showAbout(false)} />
+{:else if !run.slots}
+  <SlotSetup onpick={(n) => dispatch({ type: 'setSlots', slots: n })} onabout={() => showAbout(true)} />
 {:else}
   <main>
     <nav>
@@ -42,6 +51,7 @@
       <span class="muted">{run.slots} ball slots</span>
       <button class="ghost" onclick={() => dispatch({ type: 'setSlots', slots: null })}>change</button>
       {#if run.held.length}<button class="ghost" onclick={() => dispatch({ type: 'newRun' })}>new run</button>{/if}
+      <button class="ghost" onclick={() => showAbout(true)}>about</button>
     </nav>
 
     {#if app.undo}
