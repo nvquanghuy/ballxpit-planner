@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import balls from '../data/balls.json';
-import { evolvesInto, fusionsOf, leadsTo } from './ballInfo';
+import { evolvesInto, fusionFor, fusionsOf, leadsTo } from './ballInfo';
 
 describe('evolvesInto', () => {
   it('Bomb makes Nuclear Bomb with Poison and Time Bomb with Time', () => {
@@ -80,5 +80,22 @@ describe('leadsTo', () => {
   it('follows the real Burn → Bomb → Nuclear Bomb chain', () => {
     const fake = [{ kind: 'evolution', ball: 'Nuclear Bomb', tier: 'S' }];
     expect(leadsTo(balls, fake, 'Burn')).toContainEqual({ result: 'Nuclear Bomb', tier: 'S', via: ['Bomb'] });
+  });
+});
+
+describe('fusionFor', () => {
+  const targets = [
+    { kind: 'evolution', ball: 'A', tier: 'S' },
+    { kind: 'fusion', balls: ['A', 'B'], tier: 'S', effect: 'boom' },
+  ];
+
+  it('matches a fusion target in either order', () => {
+    expect(fusionFor(targets, ['A', 'B'])?.effect).toBe('boom');
+    expect(fusionFor(targets, ['B', 'A'])?.effect).toBe('boom');
+  });
+
+  it('ignores single balls and uncurated pairs', () => {
+    expect(fusionFor(targets, ['A'])).toBeUndefined();
+    expect(fusionFor(targets, ['A', 'C'])).toBeUndefined();
   });
 });

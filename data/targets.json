@@ -121,6 +121,7 @@
       ],
       "tier": "S",
       "why": "PCGamesN notes this fusion deals devastating damage; Maggot babies reportedly carry laser hits",
+      "effect": "Each hit infests the enemy and fires row-and-column lasers; infested enemies burst into baby balls that also fire lasers, so one bounce cascades into a grid of beams. Players report it melting NG+ bosses.",
       "sources": [
         "https://www.pcgamesn.com/ball-x-pit/evolutions-tier-list",
         "https://studio-asv.pages.dev/blog/ball-x-pit/ball-x-pit-complete-strategy-guide",
@@ -144,6 +145,7 @@
       ],
       "tier": "S",
       "why": "Full-screen pulse every 1.2s spreads Overgrowth stacks → screen-wide 3x3 blasts; best hands-free wave clear",
+      "effect": "Every 1.4s the pulse hits every enemy on screen and adds an Overgrowth stack, so every third pulse sets off a 3x3 blast on each enemy at once. Clears the board without needing to aim.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
@@ -163,6 +165,7 @@
       ],
       "tier": "S",
       "why": "Each hit pulses the whole screen, stacking Overgrowth everywhere + blind; huge clear while the ball keeps hitting",
+      "effect": "Each hit pulses the whole screen, blinding everyone and adding an Overgrowth stack to every enemy; three hits trigger 3x3 blasts on all of them at once. Clears waves and pushes bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
@@ -182,6 +185,7 @@
       ],
       "tier": "S",
       "why": "Bosses/general: each hit spreads Bleed screen-wide and triggers 20%-HP bursts (capped at 9999); core of many endless builds and boss melts",
+      "effect": "Each hit pulses the whole screen, adding 3 bleed stacks to every enemy; once an enemy reaches 12 stacks, the next pulse takes 20% of its current HP. Melts bosses, though each burst caps at 9999.",
       "sources": [
         "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
@@ -203,6 +207,7 @@
       ],
       "tier": "S",
       "why": "General: Steam's 'strongest fusion found' and the DPS guide's 'Neutron Bomb'; screen-clears every shot and reportedly two-shots bosses, but costs ~6 base balls",
+      "effect": "A nuke blast that also instantly kills the first non-boss it touches: radiation and 300-500 AoE on impact. Players report screen clears every shot and fast boss kills, but it costs about 6 base balls to build.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
         "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
@@ -223,6 +228,7 @@
       ],
       "tier": "S",
       "why": "Waves: maggots spread mini-nukes on death for strong clears (~3.4k DPS), but weak single-target on bosses. Reddit: ~75 posters on r/BALLxPIT plus general subs call it an \"instawin\"",
+      "effect": "Each nuke hit infests enemies, and every death bursts into baby balls that carry the nuke's blast, so one kill chains into explosions across the screen. Clears waves; weaker against a lone boss.",
       "sources": [
         "https://studio-asv.pages.dev/blog/ball-x-pit/ball-x-pit-complete-strategy-guide",
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
@@ -245,6 +251,7 @@
       ],
       "tier": "S",
       "why": "Waves: Sun's screen-wide trigger lets Black Hole delete every non-boss enemy every few seconds; does nothing to bosses. r/BALLxPIT's most-cited fusion (~220 posters): wipes waves, weaker on bosses at high NG+",
+      "effect": "Sun touches every enemy in view each second, and that touch carries Black Hole's instakill, so every non-boss on screen dies every few seconds. Does little to bosses, especially at high NG+.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
@@ -266,7 +273,8 @@
         "Flicker"
       ],
       "tier": "S",
-      "why": "Waves/endless: Flicker's screen pulse rolls Reaper's instakill chance on every enemy; Naturalist-era endless build (bosses immune). Reddit endless favourite (~36 posters, 250,000m run); one claim of a boss damage cap since Aug 2026, disputed",
+      "why": "Waves/endless: Flicker's screen pulse rolls Reaper's instakill chance on every enemy; Naturalist-era endless build; bosses were immune before the Apr 2026 Shadow Update. Reddit endless favourite (~36 posters, 250,000m run); one claim of a boss damage cap since Aug 2026, disputed",
+      "effect": "Every 1.4s the pulse hits every enemy on screen and rolls Reaper's 10% instakill (with heal) on each one, so waves die on their own. Works on bosses too; procs reportedly cap at 9999 since Aug 2026 (disputed).",
       "sources": [
         "https://steamcommunity.com/sharedfiles/filedetails/?id=3782381087",
         "https://www.reddit.com/r/BALLxPIT/comments/1xhad8v/",
@@ -284,6 +292,7 @@
       ],
       "tier": "S",
       "why": "Reddit endless pick since the Apr 2026 Shadow Update (~56 posters on r/BALLxPIT)",
+      "effect": "Hits roll a 10% instakill, and infested enemies burst into baby balls that roll it again, so kills chain into more kills and heals. Players report it wiping the screen without firing other balls in endless.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1sy5s97/",
         "https://www.reddit.com/r/BALLxPIT/comments/1x4macn/",
@@ -300,6 +309,7 @@
       ],
       "tier": "S",
       "why": "Reddit endless pick (~49 posters on r/BALLxPIT)",
+      "effect": "Each hit pulses the whole screen and rolls Reaper's 10% instakill on every enemy, healing 5 per kill, so waves vanish while you top up HP. Players say Reaper can hit bosses too, reportedly capped at 9999 since Aug 2026.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1syfs33/",
         "https://www.reddit.com/r/BALLxPIT/comments/1tafj7d/",
@@ -512,6 +522,7 @@
       ],
       "tier": "A",
       "why": "General: nuke radiation plus row/column lasers; one player says it one-shots what the laser touches",
+      "effect": "Each hit explodes for 300-500 and stacks radiation on everyone nearby, then fires row-and-column lasers that hit harder against those irradiated enemies. One player says the lasers one-shot what they touch.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/"
       ],
@@ -526,6 +537,7 @@
       ],
       "tier": "A",
       "why": "Commonsense pairs Holy Laser with Radiation Beam; radiation amps laser damage",
+      "effect": "Each hit fires a radiation beam that stacks up to +50% damage taken, plus row-and-column lasers that cash in on it, so the ball softens enemies and hits them harder in one bounce.",
       "sources": [
         "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
         "https://ballxpit.wiki.gg/wiki/Evolution"
@@ -541,6 +553,7 @@
       ],
       "tier": "A",
       "why": "Commonsense pairs these; frostburn raises damage taken from the lasers",
+      "effect": "Each hit adds frostburn (damage over time, +25% damage taken) and fires row-and-column lasers, so lasers and every other ball hit the frostburnt enemies harder.",
       "sources": [
         "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
         "https://ballxpit.wiki.gg/wiki/Evolution"
@@ -556,6 +569,7 @@
       ],
       "tier": "A",
       "why": "Commonsense calls this very strong; bleed + mosquito healing; both Nosferatu parents",
+      "effect": "Each hit adds 3 bleed stacks and spawns a mosquito that hits a random enemy for 80-120; at 10+ bleed the ball consumes the stacks to heal you. Steady damage across the board plus sustain.",
       "sources": [
         "https://commonsensegamer.com/ball-x-pit-best-evolutions-tier-list/",
         "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics"
@@ -571,6 +585,7 @@
       ],
       "tier": "A",
       "why": "Own judgment: on-hit mosquitos plus row/column lasers, damage and sustain",
+      "effect": "Each hit fires row-and-column lasers and releases 1-2 mosquitos that strike random enemies for 100-150 and steal health on kills, so every bounce spreads damage and keeps you topped up.",
       "sources": [
         "https://ballxpit.wiki.gg/wiki/Evolution",
         "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics"
@@ -586,6 +601,7 @@
       ],
       "tier": "A",
       "why": "Own judgment: Sun's screen-wide burn/blind with Mosquito King damage and healing",
+      "effect": "Blinds and burns every enemy in view each second, while each hit sends a mosquito after a random enemy; mosquito kills heal you. Combines board-wide damage over time with spread-out hits and sustain.",
       "sources": [
         "https://ballxpit.wiki.gg/wiki/Evolution"
       ],
@@ -600,6 +616,7 @@
       ],
       "tier": "A",
       "why": "Waves: Spider Queen's egg sacs multiply nuke explosions; recommended nuke + spawner pairing",
+      "effect": "Hits can birth egg sacs that carry the nuke's blast, so one throw can turn into several nuclear explosions. Reports vary: one player called it vicious, another said it never fired.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -616,6 +633,7 @@
       ],
       "tier": "A",
       "why": "Timer pulses stack Bleed screen-wide (12 stacks in ~3.6s); 'great for bosses' per Steam, slower than Flash",
+      "effect": "Every 1.4s the pulse adds 3 bleed stacks to every enemy on screen, so all enemies reach 12 stacks in about four pulses and then lose 20% HP. Hands-free boss damage; each burst caps at 9999.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
@@ -634,6 +652,7 @@
       ],
       "tier": "A",
       "why": "Waves: each Flash hit triggers Black Hole's instakill on the whole screen; players note it is weak on bosses",
+      "effect": "Each hit pulses the whole screen, and the pulse carries Black Hole's instakill, so every non-boss enemy dies at once every few seconds (7s cooldown). Weak against bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
@@ -654,6 +673,7 @@
       ],
       "tier": "A",
       "why": "Bosses: Sun spreads Hemorrhage bleed to all enemies in view; one player's highest-DPS fusion",
+      "effect": "Sun touches every enemy in view each second, and that touch applies Hemorrhage's 3 bleed stacks, so every enemy keeps hitting 12 stacks and losing 20% HP. Strong on bosses; bursts cap at 9999.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
@@ -672,6 +692,7 @@
       ],
       "tier": "A",
       "why": "Waves: Sun stacks Overgrowth on everything in view for chained 3x3 blasts; called 'super broken' with Sisyphus",
+      "effect": "Sun touches every enemy in view each second and adds Overgrowth stacks, so 3x3 blasts go off across the board every few seconds while everything is blinded and burning.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -688,6 +709,7 @@
       ],
       "tier": "A",
       "why": "Bosses/endless: maggot baby balls carry Hemorrhage bleed; main damage source in several endless builds",
+      "effect": "Hits add 3 bleed stacks and infest; infested enemies burst into baby balls that also bleed, so 12-stack bursts (20% current HP) fire all over the board. Melts bosses; each burst caps at 9999.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
@@ -706,6 +728,7 @@
       ],
       "tier": "A",
       "why": "Bosses: very high single-target damage, reported to delete bosses (~40k DPS on Sisyphus, pre-Cohabitants fix)",
+      "effect": "A nuke with Dark's 3x damage: one throw lands a huge explosion and full radiation on a cluster, then the ball is gone until its cooldown ends. Cheap for its damage and lands boss-killing hits.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -725,6 +748,7 @@
       ],
       "tier": "A",
       "why": "Waves: nuke hits release homing mosquitos for follow-up damage; described as 'radical' and very effective",
+      "effect": "On impact it detonates as a nuke and bursts into 3-6 mosquitos that reportedly carry the blast to random enemies, so one throw spreads explosions and radiation across the board, with lifesteal on kills.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
@@ -743,6 +767,7 @@
       ],
       "tier": "A",
       "why": "General/survival: charms the whole board so enemies fight each other; strong in endless and against add-heavy bosses",
+      "effect": "Each hit pulses the whole screen and rolls the 4% charm on every enemy, so many enemies switch sides at once and fight each other, and you heal when hitting charmed ones. Players rely on it at high NG+.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
@@ -758,6 +783,7 @@
       ],
       "tier": "A",
       "why": "Reddit: highly upvoted build (score 99) on r/BALLxPIT",
+      "effect": "A ball with a constant 100-150/s laser out front that also infests what it hits; infested enemies burst into baby balls with their own lasers, filling the screen with beams.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1qnpzia/",
         "https://www.reddit.com/r/BALLxPIT/comments/1rf8gqf/",
@@ -774,6 +800,7 @@
       ],
       "tier": "A",
       "why": "Reddit: wave clear, recommended by several r/BALLxPIT posters",
+      "effect": "Satan touches every enemy each second with burn and berserk, and that touch carries Black Hole's instakill, so non-boss enemies die almost as soon as they spawn. Does nothing extra to bosses.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1omtgkw/",
         "https://www.reddit.com/r/BALLxPIT/comments/1ve6es1/",
@@ -790,6 +817,7 @@
       ],
       "tier": "A",
       "why": "Reddit: boss killer, spiders spread bleed",
+      "effect": "Each hit adds 3 bleed and can birth egg sacs whose balls also stack bleed, so many sources push enemies to 12 stacks and 20%-HP bursts. Good boss damage in endless; bursts cap at 9999.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1qw1ook/",
         "https://www.reddit.com/r/BALLxPIT/comments/1rlpljv/",
@@ -806,6 +834,7 @@
       ],
       "tier": "A",
       "why": "Reddit: highly upvoted build (score 72) on r/BALLxPIT",
+      "effect": "Each hit fires a freeze ray (20-50 damage, 10% to freeze for 10s) and can birth egg sacs that spread more of those rays, keeping much of the board frozen while it takes damage.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1qnz4al/",
         "https://www.reddit.com/r/BALLxPIT/comments/1phhrno/"
@@ -821,6 +850,7 @@
       ],
       "tier": "B",
       "why": "Own judgment: extends the Holy Laser x Maggot idea with X Ray's radiation lasers. Reddit: one player found it disappointing",
+      "effect": "Each hit fires an X-shaped radiation laser and infests the enemy, so infested kills burst into baby balls. Players report the babies don't carry the X-ray, so it's weaker than Holy Laser x Maggot.",
       "sources": [
         "https://ballxpit.wiki.gg/wiki/Evolution",
         "https://ballxpit.wiki.gg/wiki/Fusion_Mechanics",
@@ -837,6 +867,7 @@
       ],
       "tier": "B",
       "why": "Waves: cloned nukes chain explosions across the board; 'self-multiplying nukes'. Reddit: mixed reports",
+      "effect": "A nuke that splits into a clone on hit up to 2 times, so one throw can set off several nuclear explosions across the board. Some players found the per-blast damage too weak.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/",
@@ -1122,6 +1153,7 @@
       ],
       "tier": "B",
       "why": "Own judgment: two top-rated area balls; blind storm plus lava pools",
+      "effect": "A ball that passes through enemies, wrapped in a blinding storm (10-20/s) while dropping burning lava blobs behind it, so it carves a damaging, blinding path through crowds.",
       "sources": [
         "https://www.dexerto.com/gaming/ball-x-pit-evolution-tier-list-3270546/",
         "https://ballxpit.wiki.gg/wiki/Evolution"
@@ -1137,6 +1169,7 @@
       ],
       "tier": "B",
       "why": "Own judgment: frostburn raises damage taken from Sun's screen-wide burn",
+      "effect": "Sun touches every enemy in view each second and adds frostburn, so the whole board takes frostburn damage and 25% more damage on top of Sun's own burn.",
       "sources": [
         "https://ballxpit.wiki.gg/wiki/Evolution"
       ],
@@ -1151,6 +1184,7 @@
       ],
       "tier": "B",
       "why": "General: piercing nuke ('armageddon machine gun'), best with Empty Nester",
+      "effect": "A nuke that passes through enemies instead of stopping, setting off blasts and radiation along its whole path. Players pair it with Empty Nester for a stream of piercing nukes.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/624436409752744757/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/"
@@ -1166,6 +1200,7 @@
       ],
       "tier": "B",
       "why": "General: egg sacs multiply nuke explosions; slow but effective, better on bosses than Maggot Nuke",
+      "effect": "On impact it detonates as a nuke and bursts into 2-3 egg sacs whose balls carry the blast, so one throw becomes several explosions. Slow, but holds up better on bosses than Maggot x Nuke.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
@@ -1184,6 +1219,7 @@
       ],
       "tier": "B",
       "why": "Bosses/early: cheap early fusion hitting ~3k per explosion that can carry pre-NG+ stages",
+      "effect": "A bomb with Dark's 3x damage: each throw lands one big explosion (reported around 3k), then waits out its cooldown. A cheap early fusion that carries pre-NG+ stages and bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -1201,6 +1237,7 @@
       ],
       "tier": "B",
       "why": "Waves: shotgun baby balls spray extra nukes late in a run",
+      "effect": "A nuke that sprays 3-7 fast iron baby balls off walls, so late in a run extra nuke hits land around the board. One player who built it found it underwhelming.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549730796/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -1218,6 +1255,7 @@
       ],
       "tier": "B",
       "why": "General: Satan's screen-wide burn/berserk on top of nuke AOE; video showcase only",
+      "effect": "Two effects stacked on one ball: nuke blasts with radiation on impact, plus burn and berserk on every enemy each second while it's out, so the radiation boosts all that burn damage.",
       "sources": [
         "https://www.youtube.com/watch?v=OAIp3MwA5W4",
         "https://www.reddit.com/r/roguelites/comments/1ogylj1/_/nllb3yi/"
@@ -1233,6 +1271,7 @@
       ],
       "tier": "B",
       "why": "Bosses: Hemorrhage-infused iron baby balls 'shred' bosses in endless bleed builds",
+      "effect": "Shoots 3-7 fast iron baby balls off walls that carry Hemorrhage's bleed, so many quick hits stack enemies to 12 and trigger 20%-HP bursts. Shreds bosses in endless; bursts cap at 9999.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
       ],
@@ -1247,6 +1286,7 @@
       ],
       "tier": "B",
       "why": "Bosses: clones spread bleed stacks for quick Hemorrhage bursts; slow start",
+      "effect": "Splits into clones on hit that each stack Hemorrhage's bleed, so enemies reach 12 stacks and 20%-HP bursts faster. Slow to get going; bursts cap at 9999.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
@@ -1262,6 +1302,7 @@
       ],
       "tier": "B",
       "why": "Waves: row/column lasers stack Overgrowth for chained 3x3 blasts; a player favourite",
+      "effect": "Every enemy the row-and-column lasers touch gains an Overgrowth stack, so lines of enemies hit 3 stacks together and set off chained 3x3 blasts.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
         "https://www.reddit.com/r/roguelites/comments/1ogylj1/_/noxkr9r/"
@@ -1277,6 +1318,7 @@
       ],
       "tier": "B",
       "why": "Waves: egg sacs multiply laser-carrying balls for a 'light show'",
+      "effect": "On impact it fires row-and-column lasers and bursts into 2-3 egg sacs whose balls fire lasers too, filling the board with crossing beams.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
@@ -1292,6 +1334,7 @@
       ],
       "tier": "B",
       "why": "Waves: maggot baby balls fire radiation beams; good for early/mid trash, slow start",
+      "effect": "Each hit fires a radiation beam and infests the enemy; infested kills burst into baby balls that fire more beams, spreading damage and +10% damage taken stacks. Good on trash waves, slow to start.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
@@ -1308,6 +1351,7 @@
       ],
       "tier": "B",
       "why": "General: Flicker pulses on a ball that keeps birthing egg sacs; praised on Steam",
+      "effect": "Pulses the whole screen every 1.4s while each hit can birth egg sacs, giving steady board-wide chip damage plus a growing stream of extra balls.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
       ],
@@ -1322,6 +1366,7 @@
       ],
       "tier": "B",
       "why": "General: spawned copies drop glacial spikes and keep enemies permafrosted",
+      "effect": "Drops glacial spikes that freeze enemies for 2s and can birth egg sacs from hits, adding more balls to the board while enemies stay frozen.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
@@ -1337,6 +1382,7 @@
       ],
       "tier": "B",
       "why": "General: Flicker spreads frostburn screen-wide (slow, DoT, +25% damage taken)",
+      "effect": "Every 1.4s the pulse adds frostburn to every enemy on screen, so the whole board quickly reaches 4 stacks of damage over time and takes 25% more damage from your other balls.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
@@ -1352,6 +1398,7 @@
       ],
       "tier": "B",
       "why": "Waves/survival: Sun spreads charm for crowd control that walls enemies in endless",
+      "effect": "Sun touches every enemy in view each second and rolls the 4% charm on each, so a steady stream of enemies turns and fights for you while the rest are blinded and burning.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
       ],
@@ -1366,6 +1413,7 @@
       ],
       "tier": "B",
       "why": "General: instakill chance plus vampire bats and healing; YouTube showcase (Jun 2026)",
+      "effect": "Each bounce releases a vampire bat (132-176 damage), and each impact rolls a 10% instakill that heals 5, mixing spread-out damage with kill chances and healing.",
       "sources": [
         "https://www.youtube.com/watch?v=mnNT-YzTSnU"
       ],
@@ -1380,6 +1428,7 @@
       ],
       "tier": "B",
       "why": "General: screen-wide curse plus instakill chance; one commenter claims 574k DPS",
+      "effect": "While on the field it curses every enemy, and each impact rolls a 10% instakill with a 5 HP heal: cursed burst damage on everything plus outright kills.",
       "sources": [
         "https://www.youtube.com/watch?v=ARqKAJ9nISs"
       ],
@@ -1394,6 +1443,7 @@
       ],
       "tier": "B",
       "why": "Bosses: Flicker pulses on a leech-planting ball for heavy bleed stacking; 'nastiest build' on Sisyphus",
+      "effect": "Every 1.4s the pulse hits every enemy on screen and can attach leeches that add 2 bleed per second each, so bleed piles up across the board. Players use it to stack bleed on bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
       ],
@@ -1408,6 +1458,7 @@
       ],
       "tier": "B",
       "why": "Waves: maggot babies carry instakills; fun, but players rate Flash x Black Hole higher. Reddit: recommended by several posters",
+      "effect": "Hits instantly kill a non-boss and infest it, so the kill bursts into baby balls that carry the instakill and keep chaining through the wave. Little use against bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/",
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
@@ -1426,6 +1477,7 @@
       ],
       "tier": "B",
       "why": "Reddit: recommended by several r/BALLxPIT posters",
+      "effect": "Shoots 3-7 fast iron baby balls off walls, and every bounce releases a vampire bat, so the board fills with bats that hit hard. Players report 1M+ DPS late, plus some crashes.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1p0e7z6/",
         "https://www.reddit.com/r/BALLxPIT/comments/1sz9shy/",
@@ -1442,6 +1494,7 @@
       ],
       "tier": "B",
       "why": "Reddit: wave clear (~5 posters)",
+      "effect": "On impact it instantly kills a non-boss and bursts into 2-3 egg sacs whose balls carry the instakill, clearing several enemies per throw. One player prefers it to Flash, Flicker or Sun with Black Hole.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1qy1cf7/"
       ],
@@ -1456,6 +1509,7 @@
       ],
       "tier": "B",
       "why": "Reddit: endless pick",
+      "effect": "Hits add Overgrowth and infest; infested enemies burst into baby balls that keep stacking Overgrowth, so 3x3 blasts chain through crowds. Players rank it near Flash or Flicker x Overgrowth for endless.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1rk5qdn/",
         "https://www.reddit.com/r/BALLxPIT/comments/1s0tswe/_/obwrsvx/"
@@ -1471,6 +1525,7 @@
       ],
       "tier": "B",
       "why": "Reddit: recommended, low-score posts",
+      "effect": "Infested enemies burst into baby balls that also drop glacial spikes and damage nearby enemies, so freezes and damage spread through the wave. Some players report it lags the game.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1p8l9b3/_/nr7to2h/",
         "https://www.reddit.com/r/BALLxPIT/comments/1p5bdmm/_/nqmhl9j/",
@@ -1487,6 +1542,7 @@
       ],
       "tier": "B",
       "why": "Reddit: recommended by a few posters",
+      "effect": "Infested enemies burst into baby balls that also leave burning lava blobs, so lava and burn spread across the board as enemies die.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1oyxsix/_/np7o524/",
         "https://www.reddit.com/r/BALLxPIT/comments/1oc6pjj/_/nkmrw2a/"
@@ -1502,6 +1558,7 @@
       ],
       "tier": "B",
       "why": "Reddit: recommended by a few posters",
+      "effect": "Hits add 3 bleed and infest; baby balls from deaths keep stacking bleed, and every 10-stack hit heals you, so damage spreads while healing is near-constant.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1okvgtp/",
         "https://www.reddit.com/r/BALLxPIT/comments/1ogr968/_/nlikl8q/"
@@ -1517,6 +1574,7 @@
       ],
       "tier": "B",
       "why": "Reddit: recommended by a few posters",
+      "effect": "Each hit adds 3 bleed and can birth egg sacs that add more bleed hits, so enemies hit 10 stacks often and keep healing you. Reported high DPS with Bandage Roll.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1phw39x/",
         "https://www.reddit.com/r/BALLxPIT/comments/1osa6m7/"
@@ -1532,6 +1590,7 @@
       ],
       "tier": "B",
       "why": "Reddit: endless pick",
+      "effect": "Each hit freezes everything within 2 tiles and can birth egg sacs that freeze more, keeping much of the board frozen. Players use it to lock down endless runs.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1orto8c/",
         "https://www.reddit.com/r/BALLxPIT/comments/1qv6q6i/_/o3hygax/"
@@ -1547,6 +1606,7 @@
       ],
       "tier": "B",
       "why": "Reddit: endless pick",
+      "effect": "On impact it freezes everything within 2 tiles and bursts into egg sacs that freeze more, keeping crowds frozen near the top of the screen in endless.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1rvaqlv/",
         "https://www.reddit.com/r/BALLxPIT/comments/1qvjyhm/"
@@ -1562,6 +1622,7 @@
       ],
       "tier": "C",
       "why": "General: Satan's screen-wide burn/berserk spreads Hemorrhage, combining wave clear with boss damage. Reddit: reported bugged",
+      "effect": "Should touch every enemy each second with burn, berserk and Hemorrhage's bleed, adding 20%-HP bursts to board-wide damage. Players report the Hemorrhage part doesn't work when fused.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560549667012/",
         "https://www.reddit.com/r/BALLxPIT/comments/1t1qvfx/_/ojibb8j/",
@@ -1700,6 +1761,7 @@
       ],
       "tier": "C",
       "why": "Waves: should trigger Black Hole screen-wide, but one player reported it not working (maybe a bug)",
+      "effect": "The 1.4s pulse should carry Black Hole's instakill to every non-boss on screen. Reports split: some say it misses enemies, one says it works when Flicker is fused first.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/666096879249237581/",
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/",
@@ -1719,6 +1781,7 @@
       ],
       "tier": "C",
       "why": "Waves: lasers 'one-shot everything they touch' (non-bosses only); single claim",
+      "effect": "The row-and-column lasers carry Black Hole's instakill, blowing holes through lines of non-boss enemies with each throw. Based on one player report; does nothing extra to bosses.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163936630964643/"
       ],
@@ -1733,6 +1796,7 @@
       ],
       "tier": "C",
       "why": "General: stopgap that spreads frostburn on every hit",
+      "effect": "Each hit pulses the whole screen and adds frostburn to every enemy, so the board takes damage over time and 25% more damage from your other balls. A solid stopgap.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
       ],
@@ -1747,6 +1811,7 @@
       ],
       "tier": "C",
       "why": "General: stopgap that spreads disease to everything in view",
+      "effect": "Sun touches every enemy in view each second and adds disease stacks, so the whole board takes stacking damage over time on top of Sun's burn and blind. A stopgap.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/595163560550001370/"
       ],
@@ -1761,6 +1826,7 @@
       ],
       "tier": "C",
       "why": "Waves/NG+: clones freeze enemies to stabilise high NG+; weak on bosses since they can't be frozen",
+      "effect": "A ball that freezes what it passes through and splits into clones that freeze too, keeping crowds locked in place at high NG+. Bosses can't be frozen, so it does little there.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/689741692082941941/"
       ],
@@ -1775,6 +1841,7 @@
       ],
       "tier": "C",
       "why": "Survival: crowd-control slow/freeze plus lifesteal in endless setups",
+      "effect": "Passes through enemies, freezing those within 2 tiles, with a chance to steal health and cut their attack damage by 20%. Defensive crowd control for long endless runs.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/"
       ],
@@ -1789,6 +1856,7 @@
       ],
       "tier": "C",
       "why": "Survival: huge healing in endless; little damage",
+      "effect": "On impact it bursts into egg sacs, and every bounce releases vampire bats, giving a lot of healing and support. Little damage on its own; players pair it with a damage fusion.",
       "sources": [
         "https://steamcommunity.com/app/2062430/discussions/0/694251506632856188/",
         "https://www.reddit.com/r/BALLxPIT/comments/1oaa706/",
@@ -1805,6 +1873,7 @@
       ],
       "tier": "C",
       "why": "General: big healing and screen burn, but needs ~10 balls and great luck; weak on bosses. Reddit: \"DPS was absolutely not worth it\"",
+      "effect": "Two effects stacked on one ball: bats each bounce plus board-wide burn and berserk while it's out. Big healing, but it takes about 10 balls to build and players say the damage isn't worth it.",
       "sources": [
         "https://steamcommunity.com/sharedfiles/filedetails/?id=3596416132",
         "https://steamcommunity.com/app/2062430/discussions/0/690872031640616921/",
@@ -1822,6 +1891,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one recommendation",
+      "effect": "Splits into clones on hit, and each clone can birth egg sacs, so the board fills up with balls quickly.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1qo5n8f/_/o1zbmca/"
       ],
@@ -1836,6 +1906,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one recommendation",
+      "effect": "Splits into clones that also infest, so more enemies burst into baby balls on death and the ball count snowballs. One player saw it outdamage the rest of their build.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1rhny1o/_/o807kda/"
       ],
@@ -1850,6 +1921,7 @@
       ],
       "tier": "C",
       "why": "Reddit: ~3 posters",
+      "effect": "A slow double-damage ball that splits into double-damage clones on hit, so one cheap fusion of two base balls lands several heavy hits per throw. Reported reliable around 22K damage.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1pfrlq7/"
       ],
@@ -1864,6 +1936,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one post (score 56) says \"Laser\"; orientation guessed",
+      "effect": "Hits fire a row laser and can birth baby balls that fire row lasers too, so lasers sweep more rows as the run goes on. Reported reliable at NG+7, but the source didn't say which laser.",
       "sources": [
         "https://www.reddit.com/r/BALLxPIT/comments/1otb9ig/"
       ],
@@ -1878,6 +1951,7 @@
       ],
       "tier": "C",
       "why": "Reddit: \"Ghost transfused with any of the AOE balls goes crazy, esp horizontal laser\"",
+      "effect": "Passes through enemies, so it never stops after a hit and fires a row laser on each enemy it crosses, sweeping row after row in one throw.",
       "sources": [
         "https://www.reddit.com/r/roguelites/comments/1ovjdrl/_/nokda8j/",
         "https://www.reddit.com/r/Games/comments/1o7gax0/_/njrrouj/"
@@ -1893,6 +1967,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one poster, big damage on a Shield Bearer build",
+      "effect": "Two effects stacked on one ball: Sun's blind and burn on every enemy in view, plus lava blobs that add their own burn where enemies walk. A big damage boost; based on one report.",
       "sources": [
         "https://www.reddit.com/r/roguelites/comments/1o85rf6/_/nkxd11s/"
       ],
@@ -1907,6 +1982,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one poster, AoE that burns and shocks",
+      "effect": "Burns everything within 2 tiles each second and deals 1-20 damage to up to 3 nearby enemies, giving an AoE that both burns and shocks. Based on one report.",
       "sources": [
         "https://www.reddit.com/r/roguelites/comments/1o92x40/_/nk32qsi/"
       ],
@@ -1921,6 +1997,7 @@
       ],
       "tier": "C",
       "why": "Reddit: one poster, boss damage",
+      "effect": "A slow ball whose damage grows with each hit (up to 300%) and adds 2 bleed per hit, so it ramps against a single tough target. A cheap early boss-damage pick.",
       "sources": [
         "https://www.reddit.com/r/roguelites/comments/1twimvf/_/opp2p16/"
       ],

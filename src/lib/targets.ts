@@ -7,6 +7,8 @@ export type TargetEntry = Target & {
   id: string;
   tier: Tier;
   why: string;
+  /** Fusions: what the fused ball does in play and why it's strong. */
+  effect?: string;
   sources: string[];
   unverified?: boolean;
 };

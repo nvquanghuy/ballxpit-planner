@@ -16,7 +16,7 @@ export function evolvesInto(balls: { name: string; parents?: string[][] }[], nam
 }
 
 type Recipes = { name: string; parents?: string[][] }[];
-type TierTarget = { kind: string; tier: string; ball?: string; balls?: string[]; why?: string };
+type TierTarget = { kind: string; tier: string; ball?: string; balls?: string[]; why?: string; effect?: string };
 
 const TIER_ORDER = ['S', 'A', 'B', 'C'];
 const tierRank = (t: string) => (TIER_ORDER.indexOf(t) + 1 || 99);
@@ -25,6 +25,7 @@ export interface FusionLink {
   partner: string;
   tier: string;
   why?: string;
+  effect?: string;
 }
 
 /** Curated fusion targets that include `name`, best tier first. */
@@ -33,9 +34,16 @@ export function fusionsOf(targets: TierTarget[], name: string): FusionLink[] {
   for (const t of targets) {
     if (t.kind !== 'fusion' || !t.balls) continue;
     const i = t.balls.indexOf(name);
-    if (i >= 0) out.push({ partner: t.balls[1 - i], tier: t.tier, why: t.why });
+    if (i >= 0) out.push({ partner: t.balls[1 - i], tier: t.tier, why: t.why, effect: t.effect });
   }
   return out.sort((a, b) => tierRank(a.tier) - tierRank(b.tier));
+}
+
+/** The curated fusion target made of exactly these two balls, in either order. */
+export function fusionFor<T extends TierTarget>(targets: T[], names: string[]): T | undefined {
+  if (names.length !== 2) return;
+  const [a, b] = names;
+  return targets.find((t) => t.kind === 'fusion' && !!t.balls && ((t.balls[0] === a && t.balls[1] === b) || (t.balls[0] === b && t.balls[1] === a)));
 }
 
 export interface Lead {

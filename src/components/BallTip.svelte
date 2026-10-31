@@ -1,12 +1,15 @@
 <script lang="ts">
   import { allBalls, ballInfo, icon, targets } from '../lib/data';
-  import { evolvesInto, fusionsOf, leadsTo } from '../lib/ballInfo';
+  import { evolvesInto, fusionFor, fusionsOf, leadsTo } from '../lib/ballInfo';
+  import { fusionName } from '../lib/planner';
   import { cancelClose, closeSoon, closeTip, tip } from '../lib/tip.svelte';
 
   let panel = $state<HTMLElement>();
   let pos = $state<{ x: number; y: number } | null>(null);
 
   const balls = $derived(tip.names.map((n) => ballInfo.get(n)).filter((b) => !!b));
+  // Every fused-target anchor passes exactly its two components, so the pair identifies the fusion.
+  const fusion = $derived(tip.directions ? undefined : fusionFor(targets, tip.names));
   const FUSE_CAP = 6;
   const LEAD_CAP = 5;
   const dmg = (b: { damageType: string[] }) => b.damageType.filter((t) => t !== 'Base');
@@ -55,6 +58,22 @@
     style:left="{pos?.x ?? 0}px"
     style:top="{pos?.y ?? 0}px"
   >
+    {#if fusion?.kind === 'fusion'}
+      <section class="fusion">
+        <header>
+          <span class="pair">
+            <img class="icon" src={icon(fusion.balls[0])} alt="" /><span class="plus">⊕</span><img class="icon" src={icon(fusion.balls[1])} alt="" />
+          </span>
+          <div>
+            <strong>{fusionName(fusion.balls[0], fusion.balls[1])}</strong>
+            <span class="kind fused">fused{#if fusion.unverified}<span class="unv">· unverified</span>{/if}</span>
+          </div>
+          <span class="tier tier-{fusion.tier}">{fusion.tier}</span>
+        </header>
+        <p class="desc effect">{fusion.effect ?? fusion.why}</p>
+        {#if fusion.effect}<p class="muted why"><span class="lbl">Why it ranks</span> {fusion.why}</p>{/if}
+      </section>
+    {/if}
     {#each balls as b (b.name)}
       {@const uses = evolvesInto(allBalls, b.name)}
       {@const fuses = fusionsOf(targets, b.name)}
@@ -68,7 +87,9 @@
           </div>
         </header>
         <p class="desc">{b.description}</p>
-        {#if tip.directions}
+        {#if fusion}
+          <!-- component of a fusion: description only, the fusion is the story -->
+        {:else if tip.directions}
           <div class="line">
             <span class="lbl">If you take it</span>
             {#if tip.directions.length}
@@ -136,7 +157,7 @@
             <span class="lbl">Fuses with</span>
             <ul>
               {#each fuses.slice(0, FUSE_CAP) as f (f.partner)}
-                <li title={f.why}>
+                <li title={f.effect ?? f.why}>
                   <span class="tier tier-{f.tier} sm">{f.tier}</span>
                   <span class="muted">⊕</span>
                   <img class="icon xs" src={icon(f.partner)} alt="" />{f.partner}
@@ -147,13 +168,13 @@
           </div>
         {/if}
         {/if}
-        {#if dmg(b).length || b.statusEffect.length}
+        {#if !fusion && (dmg(b).length || b.statusEffect.length)}
           <div class="tags">
             {#each dmg(b) as t (t)}<span class="tag dmg">{t}</span>{/each}
             {#each b.statusEffect as t (t)}<span class="tag">{t}</span>{/each}
           </div>
         {/if}
-        {#if b.unlockRequirement}<p class="muted unlock">🔓 {b.unlockRequirement}</p>{/if}
+        {#if !fusion && b.unlockRequirement}<p class="muted unlock">🔓 {b.unlockRequirement}</p>{/if}
       </section>
     {/each}
   </div>
@@ -186,6 +207,17 @@
   .kind { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
   .kind.evo { color: var(--accent); }
   .desc { margin: 0; }
+  .fusion header { gap: 6px; }
+  .fusion header div { flex: 1; }
+  .pair { display: inline-flex; align-items: center; gap: 2px; flex-shrink: 0; }
+  .plus { color: var(--accent); font-size: 14px; }
+  .kind.fused { color: var(--accent); }
+  .unv { color: var(--warn); margin-left: 4px; }
+  .effect { font-size: 14px; line-height: 1.4; }
+  .why { margin: 0; font-size: 12px; }
+  .why .lbl { width: auto; margin-right: 2px; }
+  .fusion ~ section header .icon { width: 24px; height: 24px; }
+  .fusion ~ section .desc { font-size: 12px; color: var(--muted); }
   .line { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; }
   .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); width: 100%; }
   .recipe, li { display: inline-flex; align-items: center; gap: 4px; }
