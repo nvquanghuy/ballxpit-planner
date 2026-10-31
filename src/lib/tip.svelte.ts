@@ -1,24 +1,26 @@
 // One shared ball popover: `use:balltip` on any anchor, <BallTip /> mounted once in App.
 import type { Action } from 'svelte/action';
+import type { BallName, Tier } from './domain';
 
 /** Targets an offered ball moves forward, shown instead of its recipes. */
 export interface TipDirection {
   label: string;
-  tier: string;
+  tier: Tier;
   before: number;
   after: number;
 }
 
-export type TipArg = string | string[] | { balls: string | string[]; tap?: boolean; directions?: TipDirection[] };
+type Balls = BallName | readonly BallName[];
+export type TipArg = Balls | { balls: Balls; tap?: boolean; directions?: TipDirection[] };
 
-export const tip = $state<{ names: string[]; anchor: HTMLElement | null; hover: boolean; directions: TipDirection[] | null }>({
+export const tip = $state<{ names: BallName[]; anchor: HTMLElement | null; hover: boolean; directions: TipDirection[] | null }>({
   names: [],
   anchor: null,
   hover: false,
   directions: null,
 });
 
-export const openTip = (anchor: HTMLElement, names: string[], hover = false, directions: TipDirection[] | null = null) => {
+export const openTip = (anchor: HTMLElement, names: BallName[], hover = false, directions: TipDirection[] | null = null) => {
   cancelClose();
   tip.anchor = anchor;
   tip.names = names;
@@ -46,9 +48,9 @@ const HOVER_MS = 250;
 const PRESS_MS = 450;
 
 const parse = (arg: TipArg) => {
-  const o = typeof arg === 'object' && !Array.isArray(arg) ? arg : { balls: arg };
+  const o = typeof arg === 'object' && !Array.isArray(arg) ? (arg as Exclude<TipArg, Balls>) : { balls: arg as Balls };
   return {
-    names: ([] as string[]).concat(o.balls),
+    names: ([] as BallName[]).concat(o.balls),
     tap: !!o.tap,
     directions: 'directions' in o ? (o.directions ?? null) : null,
   };

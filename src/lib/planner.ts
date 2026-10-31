@@ -7,39 +7,36 @@
 // - Missing balls are acquired just-in-time, right before the evolve that consumes them.
 // - You can't hold two copies of the same ball at once (picking an owned ball levels it).
 // - Balls can be re-acquired after being consumed.
-// - Fused balls ("A ⊕ B") in owned can't be used again but still take a slot.
+// - Fused balls you hold can't be used again but still take a slot.
 
-export interface Ball {
-  name: string;
-  parents?: string[][];
-}
+import { fusionProblem, getBall, type Catalog } from './catalog';
+import { holdsBall, resultOf, sameHeld, usableBalls, type BallName, type Held, type Pair, type Target } from './domain';
 
-export type Target =
-  | { kind: 'evolution'; ball: string }
-  | { kind: 'fusion'; balls: [string, string] };
-
-export type Node =
-  | { kind: 'owned'; ball: string }
-  | { kind: 'acquire'; ball: string }
-  | { kind: 'evolve'; ball: string; recipe: number; recipeCount: number; children: Node[] }
-  | { kind: 'fuse'; ball: string; children: Node[] };
+export type BallNode =
+  | { kind: 'owned'; ball: BallName }
+  | { kind: 'acquire'; ball: BallName }
+  | { kind: 'evolve'; ball: BallName; recipe: number; recipeCount: number; children: BallNode[] };
+export type FuseNode = { kind: 'fuse'; children: [BallNode, BallNode] };
+export type Node = BallNode | FuseNode;
 
 export type Step =
-  | { kind: 'acquire'; ball: string; held: number }
-  | { kind: 'evolve'; ball: string; from: string[]; held: number }
-  | { kind: 'fuse'; ball: string; from: string[]; held: number };
+  | { kind: 'acquire'; ball: BallName; held: number }
+  | { kind: 'evolve'; ball: BallName; from: BallName[]; held: number }
+  | { kind: 'fuse'; from: Pair; held: number };
 
 export interface Plan {
-  target: string;
+  target: Target;
+  /** What you hold once the plan is done. */
+  result: Held;
   tree: Node;
   steps: Step[];
   /** Owned balls the plan consumes. */
-  have: string[];
+  have: BallName[];
   /** Balls still to find, with multiplicity. */
-  need: Map<string, number>;
+  need: Map<BallName, number>;
   needCount: number;
   /** Intermediate + final evolutions made along the way. */
-  via: string[];
+  via: BallName[];
   startHeld: number;
   /** Slots taken by fused balls you hold; counted in startHeld, peak and every step's held. */
   reserved: number;
@@ -47,60 +44,16 @@ export interface Plan {
   slots: number;
   fits: boolean;
   /** Steps where you'd have to hold a duplicate ball (not possible in-game). */
-  duplicateConflicts: string[];
-  pinnedUnused: string[];
+  duplicateConflicts: BallName[];
+  pinnedUnused: BallName[];
 }
 
 export interface PlanOptions {
-  owned: string[];
-  pinned?: string[];
+  owned: readonly Held[];
+  pinned?: readonly BallName[];
   slots: number;
-  /** Force a recipe index for a given evolved ball name. */
-  recipeOverrides?: Record<string, number>;
-}
-
-export const fusionName = (a: string, b: string) => `${a} ⊕ ${b}`;
-const FUSE_SEP = ' ⊕ ';
-export const isFused = (name: string) => name.includes(FUSE_SEP);
-/** The two components of a fused ball name, in name order. */
-export const fusedParts = (name: string) => name.split(FUSE_SEP) as [string, string];
-
-export class Catalog {
-  readonly byName = new Map<string, Ball>();
-
-  constructor(balls: Ball[]) {
-    for (const b of balls) this.byName.set(b.name, b);
-  }
-
-  get(name: string): Ball {
-    const b = this.byName.get(name);
-    if (!b) throw new Error(`unknown ball "${name}"`);
-    return b;
-  }
-
-  isBase(name: string) {
-    return !this.get(name).parents?.length;
-  }
-
-  /** Why two balls can't be fused, or null if they can. */
-  fusionProblem(a: string, b: string): string | null {
-    this.get(a);
-    this.get(b);
-    if (a === b) return 'a ball cannot be fused with itself';
-    for (const ball of this.byName.values()) {
-      for (const r of ball.parents ?? []) {
-        if (r.length === 2 && r.includes(a) && r.includes(b)) return `${a} + ${b} must evolve into ${ball.name}`;
-      }
-    }
-    return null;
-  }
-
-  /** A catalog ball, or a fused pair of catalog balls that may be fused. */
-  isValidOwned(name: string) {
-    if (!isFused(name)) return this.byName.has(name);
-    const parts = name.split(FUSE_SEP);
-    return parts.length === 2 && parts.every((p) => this.byName.has(p)) && this.fusionProblem(parts[0], parts[1]) === null;
-  }
+  /** Force a recipe index for a given evolved ball. */
+  recipeOverrides?: Partial<Record<BallName, number>>;
 }
 
 function* cartesian<T>(lists: T[][]): Generator<T[]> {
@@ -124,15 +77,16 @@ function* permutations<T>(items: T[]): Generator<T[]> {
 }
 
 /** All recipe-choice trees for a ball (owned balls may stop the expansion). */
-function expand(cat: Catalog, name: string, owned: Set<string>, overrides: Record<string, number>): Node[] {
-  const out: Node[] = [];
+function expand(cat: Catalog, name: BallName, owned: Set<BallName>, overrides: Partial<Record<BallName, number>>): BallNode[] {
+  const out: BallNode[] = [];
   if (owned.has(name)) out.push({ kind: 'owned', ball: name });
-  const ball = cat.get(name);
-  if (!ball.parents?.length) {
+  const ball = getBall(cat, name);
+  if (!ball.parents.length) {
     out.push({ kind: 'acquire', ball: name });
     return out;
   }
-  const recipes = name in overrides ? [overrides[name]] : ball.parents.map((_, i) => i);
+  const o = overrides[name];
+  const recipes = o !== undefined && o < ball.parents.length ? [o] : ball.parents.map((_, i) => i);
   for (const i of recipes) {
     const childOptions = ball.parents[i].map((p) => expand(cat, p, owned, overrides));
     for (const children of cartesian(childOptions)) {
@@ -142,7 +96,7 @@ function expand(cat: Catalog, name: string, owned: Set<string>, overrides: Recor
   return out;
 }
 
-function ownedUses(node: Node, acc: string[] = []): string[] {
+function ownedUses(node: Node, acc: BallName[] = []): BallName[] {
   if (node.kind === 'owned') acc.push(node.ball);
   else if (node.kind === 'evolve' || node.kind === 'fuse') node.children.forEach((c) => ownedUses(c, acc));
   return acc;
@@ -166,24 +120,29 @@ function* orders(node: Node): Generator<Node[]> {
 interface Sim {
   steps: Step[];
   peak: number;
-  duplicateConflicts: string[];
+  duplicateConflicts: BallName[];
 }
 
-function simulate(order: Node[], startHeld: string[], reserved: number): Sim {
-  const held = [...startHeld];
+function simulate(order: Node[], startHeld: BallName[], reserved: number): Sim {
+  const held: (BallName | null)[] = [...startHeld]; // null: the fused result, which no recipe uses
   let peak = held.length + reserved;
   const steps: Step[] = [];
-  const duplicateConflicts: string[] = [];
+  const duplicateConflicts: BallName[] = [];
   for (const n of order) {
     if (n.kind === 'acquire') {
       if (held.includes(n.ball)) duplicateConflicts.push(n.ball);
       held.push(n.ball);
       steps.push({ kind: 'acquire', ball: n.ball, held: held.length + reserved });
-    } else if (n.kind === 'evolve' || n.kind === 'fuse') {
+    } else if (n.kind === 'evolve') {
       const from = n.children.map((c) => c.ball);
       for (const f of from) held.splice(held.indexOf(f), 1);
       held.push(n.ball);
-      steps.push({ kind: n.kind, ball: n.ball, from, held: held.length + reserved });
+      steps.push({ kind: 'evolve', ball: n.ball, from, held: held.length + reserved });
+    } else if (n.kind === 'fuse') {
+      const from = [n.children[0].ball, n.children[1].ball] as const;
+      for (const f of from) held.splice(held.indexOf(f), 1);
+      held.push(null);
+      steps.push({ kind: 'fuse', from, held: held.length + reserved });
     }
     peak = Math.max(peak, held.length + reserved);
   }
@@ -193,24 +152,21 @@ function simulate(order: Node[], startHeld: string[], reserved: number): Sim {
 const MAX_SIMS = 50_000;
 
 export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
-  const owned = new Set(opts.owned.filter((n) => !isFused(n)));
-  const reserved = opts.owned.filter(isFused).length;
+  const owned = new Set(usableBalls(opts.owned));
+  const reserved = opts.owned.filter((h) => h.kind === 'fused').length;
   const overrides = opts.recipeOverrides ?? {};
   const pinned = opts.pinned ?? [];
 
   let trees: Node[];
-  let targetName: string;
   if (target.kind === 'evolution') {
-    targetName = target.ball;
     trees = expand(cat, target.ball, owned, overrides).filter((t) => t.kind !== 'owned');
   } else {
     const [a, b] = target.balls;
-    const problem = cat.fusionProblem(a, b);
+    const problem = fusionProblem(cat, a, b);
     if (problem) throw new Error(`invalid fusion: ${problem}`);
-    targetName = fusionName(a, b);
     const left = expand(cat, a, owned, overrides);
     const right = expand(cat, b, owned, overrides);
-    trees = [...cartesian([left, right])].map((children) => ({ kind: 'fuse' as const, ball: targetName, children }));
+    trees = [...cartesian([left, right])].map(([l, r]) => ({ kind: 'fuse' as const, children: [l, r] as [BallNode, BallNode] }));
   }
 
   let best: { plan: Plan; key: number[] } | null = null;
@@ -218,7 +174,7 @@ export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
   for (const tree of trees) {
     const uses = ownedUses(tree);
     if (new Set(uses).size !== uses.length) continue; // an owned ball can cover one leaf only
-    const need = new Map<string, number>();
+    const need = new Map<BallName, number>();
     const walk = (n: Node) => {
       if (n.kind === 'acquire') need.set(n.ball, (need.get(n.ball) ?? 0) + 1);
       if (n.kind === 'evolve' || n.kind === 'fuse') n.children.forEach(walk);
@@ -236,13 +192,14 @@ export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
       best = {
         key,
         plan: {
-          target: targetName,
+          target,
+          result: resultOf(target),
           tree,
           steps: sim.steps,
           have: uses,
           need,
           needCount,
-          via: sim.steps.filter((s) => s.kind === 'evolve').map((s) => s.ball),
+          via: sim.steps.flatMap((s) => (s.kind === 'evolve' ? [s.ball] : [])),
           startHeld: uses.length + reserved,
           reserved,
           peak: sim.peak,
@@ -254,7 +211,7 @@ export function plan(cat: Catalog, target: Target, opts: PlanOptions): Plan {
       };
     }
   }
-  if (!best) throw new Error(`no plan for ${targetName}`);
+  if (!best) throw new Error(`no plan for ${target.kind === 'evolution' ? target.ball : target.balls.join(' + ')}`);
   return best.plan;
 }
 
@@ -263,21 +220,19 @@ function lexLess(a: number[], b: number[]) {
   return false;
 }
 
-/** Owned + pinned after carrying out a ready plan: its owned balls become the result, in place of the first. */
-export function applyPlan(owned: string[], pinned: string[], p: Plan): { owned: string[]; pinned: string[] } {
+/** Held + pinned after carrying out a ready plan: its owned balls become the result, in place of the first. */
+export function applyPlan(owned: readonly Held[], pinned: readonly BallName[], p: Plan): { held: Held[]; pinned: BallName[] } {
   const left = [...owned];
   let at = left.length;
   for (const h of p.have) {
-    const i = left.indexOf(h);
+    const i = left.findIndex((x) => x.kind === 'ball' && x.name === h);
     if (i < 0) continue;
     left.splice(i, 1);
     at = Math.min(at, i);
   }
-  if (!left.includes(p.target)) left.splice(at, 0, p.target); // a ball you already hold just levels up
-  return { owned: left, pinned: pinned.filter((n) => left.includes(n)) };
+  if (!left.some((x) => sameHeld(x, p.result))) left.splice(at, 0, p.result); // a ball you already hold just levels up
+  return { held: left, pinned: pinned.filter((n) => holdsBall(left, n)) };
 }
 
 /** Every ingredient is in hand and the route fits: one click carries it out. */
 export const isReady = (p: Plan) => p.needCount === 0 && p.fits && !p.duplicateConflicts.length;
-
-export const targetLabel = (t: Target) => (t.kind === 'evolution' ? t.ball : fusionName(t.balls[0], t.balls[1]));

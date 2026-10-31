@@ -1,6 +1,7 @@
 <script lang="ts">
   import { flushSync } from 'svelte';
   import { allBalls, icon } from '../lib/data';
+  import { holdsBall, type BallName, type Held, type TargetId } from '../lib/domain';
   import type { OfferAdvice, OfferResult } from '../lib/offers';
   import { balltip, type TipDirection } from '../lib/tip.svelte';
   import { comboFor } from '../lib/roleEdits.svelte';
@@ -15,14 +16,14 @@
     onclear,
     onopen,
   }: {
-    owned: string[];
-    offers: string[];
+    owned: Held[];
+    offers: BallName[];
     advice: OfferAdvice;
-    onadd: (name: string) => void;
-    onremove: (name: string) => void;
-    ontake: (name: string) => void;
+    onadd: (name: BallName) => void;
+    onremove: (name: BallName) => void;
+    ontake: (name: BallName) => void;
     onclear: () => void;
-    onopen: (id: string) => void;
+    onopen: (id: TargetId) => void;
   } = $props();
 
   let picking = $state(false);
@@ -30,7 +31,7 @@
   const SHOW = 8;
 
   // Level-ups offer base balls; ones you own would only be upgrades, which we ignore.
-  const choices = $derived(allBalls.filter((b) => !b.parents && !owned.includes(b.name)));
+  const choices = $derived(allBalls.filter((b) => !b.parents.length && !holdsBall(owned, b.name)));
   const result = $derived(new Map(advice.ranked.map((r) => [r.ball, r])));
   const best = $derived(advice.ranked[0]?.effects.length ? advice.ranked[0] : null);
   const runnerUp = $derived(advice.ranked[1]?.effects.length ? advice.ranked[1] : null);
@@ -38,7 +39,7 @@
   const tipDirections = (r: OfferResult | undefined): TipDirection[] =>
     (r?.effects ?? []).map((e) => ({ label: e.label, tier: e.entry.tier, before: e.before, after: e.after }));
 
-  const toggle = (name: string) => (offers.includes(name) ? onremove(name) : onadd(name));
+  const toggle = (name: BallName) => (offers.includes(name) ? onremove(name) : onadd(name));
 
   // Keyboard search: open the picker, type a few letters, Enter to add, repeat.
   let query = $state('');
@@ -71,7 +72,7 @@
     picking = false;
     reset();
   };
-  const pick = (name: string) => {
+  const pick = (name: BallName) => {
     toggle(name);
     reset();
     input?.focus();

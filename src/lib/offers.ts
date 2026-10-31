@@ -1,6 +1,7 @@
 // Level-up offers: which offered ball moves which target forward, and which to take.
-import { Catalog, isFused, plan, targetLabel, type Plan } from './planner';
-import { TIERS, type TargetEntry } from './targets';
+import type { Catalog } from './catalog';
+import { held, holdsBall, targetLabel, TIERS, usableBalls, type BallName, type Held, type TargetEntry } from './domain';
+import { plan, type Plan } from './planner';
 
 export interface Effect {
   entry: TargetEntry;
@@ -14,7 +15,7 @@ export interface Effect {
 }
 
 export interface OfferResult {
-  ball: string;
+  ball: BallName;
   effects: Effect[];
   /** Your slots are full: fuse or evolve first to make room. */
   needsRoom: boolean;
@@ -26,7 +27,7 @@ export interface Direction {
   label: string;
   before: number;
   /** Offers that move this target forward, best first. */
-  picks: { ball: string; after: number }[];
+  picks: { ball: BallName; after: number }[];
 }
 
 export interface OfferAdvice {
@@ -44,14 +45,15 @@ const tierScore = (e: TargetEntry) => TIERS.length - TIERS.indexOf(e.tier);
  */
 export function adviseOffers(
   cat: Catalog,
-  entries: TargetEntry[],
-  opts: { owned: string[]; pinned: string[]; slots: number; offers: string[] },
+  entries: readonly TargetEntry[],
+  opts: { owned: readonly Held[]; pinned: readonly BallName[]; slots: number; offers: readonly BallName[] },
 ): OfferAdvice {
-  const offers = opts.offers.filter((o) => !opts.owned.includes(o));
+  const offers = opts.offers.filter((o) => !holdsBall(opts.owned, o));
+  const usable = usableBalls(opts.owned).length > 0;
   const before = new Map(entries.map((e) => [e.id, plan(cat, e, opts)]));
 
   const results: OfferResult[] = offers.map((ball) => {
-    const owned = [...opts.owned, ball];
+    const owned = [...opts.owned, held(ball)];
     const effects: Effect[] = [];
     for (const entry of entries) {
       const b = before.get(entry.id)!;
@@ -62,7 +64,7 @@ export function adviseOffers(
         label: targetLabel(entry),
         before: b.needCount,
         after: p.needCount,
-        opens: opts.owned.some((n) => !isFused(n)) && !b.have.length,
+        opens: usable && !b.have.length,
         plan: p,
       });
     }

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { icon } from '../lib/data';
   import { isReady, type Plan } from '../lib/planner';
-  import { TIERS, type Suggestion, type Tier } from '../lib/targets';
+  import type { Suggestion } from '../lib/targets';
+  import { TIERS, type TargetId, type Tier } from '../lib/domain';
   import { balltip } from '../lib/tip.svelte';
   import { comboFor, roleOf } from '../lib/roleEdits.svelte';
   import { ROLE_INFO, tagOf } from '../lib/roles';
@@ -17,7 +18,7 @@
     items: Suggestion[];
     showAll: boolean;
     hasOwned: boolean;
-    onopen: (id: string) => void;
+    onopen: (id: TargetId) => void;
     /** Carry out a ready plan: its owned balls become the result. */
     ondone: (plan: Plan) => void;
   } = $props();
@@ -57,7 +58,7 @@
     {#each shown as s (s.entry.id)}
       {@const ready = isReady(s.plan)}
       {@const combo = comboFor(s.entry)}
-      {@const tag = tagOf(s.label, roleOf)}
+      {@const tag = tagOf(s.plan.result, roleOf)}
       <li>
         <button class="card" class:nofit={!s.plan.fits} class:ready onclick={() => onopen(s.entry.id)}>
           <TargetIcon target={s.entry} size="lg" />

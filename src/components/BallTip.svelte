@@ -1,8 +1,9 @@
 <script lang="ts">
   import { flushSync } from 'svelte';
-  import { allBalls, ballInfo, icon, targets } from '../lib/data';
+  import { catalog, icon, targets } from '../lib/data';
+  import { getBall } from '../lib/catalog';
+  import { fusionLabel, type BallName } from '../lib/domain';
   import { evolvesInto, fusionFor, fusionsOf, leadsTo } from '../lib/ballInfo';
-  import { fusionName } from '../lib/planner';
   import { cancelClose, closeSoon, closeTip, tip } from '../lib/tip.svelte';
   import { ROLE_INFO, ROLES, VS, type Role, type Vs } from '../lib/roles';
   import { resetRoles, roleEdits, roleOf, setRoles } from '../lib/roleEdits.svelte';
@@ -10,7 +11,7 @@
   let panel = $state<HTMLElement>();
   let pos = $state<{ x: number; y: number } | null>(null);
 
-  const balls = $derived(tip.names.map((n) => ballInfo.get(n)).filter((b) => !!b));
+  const balls = $derived(tip.names.map((n) => getBall(catalog, n)));
   // Every fused-target anchor passes exactly its two components, so the pair identifies the fusion.
   const fusion = $derived(tip.directions ? undefined : fusionFor(targets, tip.names));
   const FUSE_CAP = 6;
@@ -18,12 +19,12 @@
   const dmg = (b: { damageType: string[] }) => b.damageType.filter((t) => t !== 'Base');
 
   // Role editing: one ball at a time, closed whenever the popover moves to another anchor.
-  let editing = $state<string | null>(null);
+  let editing = $state<BallName | null>(null);
   $effect(() => {
     void tip.anchor;
     editing = null;
   });
-  const startEdit = (name: string) => {
+  const startEdit = (name: BallName) => {
     editing = name;
     flushSync();
     // the edit row makes the panel taller: nudge it up rather than re-place it (which could flip it off the pointer)
@@ -31,12 +32,12 @@
     const max = innerHeight - panel.getBoundingClientRect().height - 8;
     if (pos.y > max) pos = { ...pos, y: Math.max(8, max) };
   };
-  const toggleRole = (name: string, r: Role) => {
+  const toggleRole = (name: BallName, r: Role) => {
     const t = roleOf(name);
     const roles = t?.roles ?? [];
     setRoles(name, { roles: roles.includes(r) ? roles.filter((x) => x !== r) : [...roles, r], vs: t?.vs });
   };
-  const setVs = (name: string, vs: Vs) => setRoles(name, { roles: roleOf(name)?.roles ?? [], vs });
+  const setVs = (name: BallName, vs: Vs) => setRoles(name, { roles: roleOf(name)?.roles ?? [], vs });
 
   $effect(() => {
     const a = tip.anchor;
@@ -89,7 +90,7 @@
             <img class="icon" src={icon(fusion.balls[0])} alt="" /><span class="plus">⊕</span><img class="icon" src={icon(fusion.balls[1])} alt="" />
           </span>
           <div>
-            <strong>{fusionName(fusion.balls[0], fusion.balls[1])}</strong>
+            <strong>{fusionLabel(...fusion.balls)}</strong>
             <span class="kind fused">fused{#if fusion.unverified}<span class="unv">· unverified</span>{/if}</span>
           </div>
           <span class="tier tier-{fusion.tier}">{fusion.tier}</span>
@@ -99,9 +100,9 @@
       </section>
     {/if}
     {#each balls as b (b.name)}
-      {@const uses = evolvesInto(allBalls, b.name)}
+      {@const uses = evolvesInto(catalog, b.name)}
       {@const fuses = fusionsOf(targets, b.name)}
-      {@const leads = leadsTo(allBalls, targets, b.name)}
+      {@const leads = leadsTo(catalog, targets, b.name)}
       {@const tag = roleOf(b.name)}
       {@const edited = b.name in roleEdits}
       <section>
@@ -109,7 +110,7 @@
           <img class="icon" src={b.img} alt="" />
           <div>
             <strong>{b.name}</strong>
-            <span class="kind" class:evo={!!b.parents}>{b.parents ? 'evolved' : 'base'}</span>
+            <span class="kind" class:evo={!!b.parents.length}>{b.parents.length ? 'evolved' : 'base'}</span>
           </div>
         </header>
         <div class="roles">
@@ -164,7 +165,7 @@
             {/if}
           </div>
         {:else}
-        {#if b.parents}
+        {#if b.parents.length}
           <div class="line">
             <span class="lbl">Recipe</span>
             {#each b.parents as r, i (i)}

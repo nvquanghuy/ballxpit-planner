@@ -1,19 +1,20 @@
 // Your role edits: overrides on top of data/roles.json, kept in localStorage.
-import { researchedRoles } from './data';
-import type { Target } from './planner';
-import { comboOf, lookupWith, sanitizeRoles, type RoleLookup, type RoleTag } from './roles';
+import { catalog, researchedRoles } from './data';
+import type { BallName, Target } from './domain';
+import { parseRoleTags } from './parse';
+import { comboOf, lookupWith, type RoleLookup, type RoleTag, type RoleTags } from './roles';
 
 const KEY = 'pit-planner.roleEdits';
 
-const load = (): Record<string, RoleTag> => {
+const load = (): RoleTags => {
   try {
-    return sanitizeRoles(JSON.parse(localStorage.getItem(KEY) ?? '{}'));
+    return parseRoleTags(JSON.parse(localStorage.getItem(KEY) ?? '{}'), catalog);
   } catch {
     return {};
   }
 };
 
-export const roleEdits = $state<Record<string, RoleTag>>(load());
+export const roleEdits = $state<RoleTags>(load());
 
 const save = () => {
   try {
@@ -29,12 +30,12 @@ export const roleOf: RoleLookup = (name) => lookupWith(researchedRoles, roleEdit
 /** "enabler + effect" style hint for a fusion target, else null. */
 export const comboFor = (t: Target) => (t.kind === 'fusion' ? comboOf(t.balls[0], t.balls[1], roleOf) : null);
 
-export const setRoles = (name: string, tag: Pick<RoleTag, 'roles' | 'vs'>) => {
+export const setRoles = (name: BallName, tag: Pick<RoleTag, 'roles' | 'vs'>) => {
   roleEdits[name] = { roles: [...tag.roles], ...(tag.vs ? { vs: tag.vs } : {}) };
   save();
 };
 
-export const resetRoles = (name: string) => {
+export const resetRoles = (name: BallName) => {
   delete roleEdits[name];
   save();
 };

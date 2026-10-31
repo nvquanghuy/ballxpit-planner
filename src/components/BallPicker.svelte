@@ -1,7 +1,7 @@
 <script lang="ts">
   import { flushSync } from 'svelte';
-  import { allBalls, icon, type BallInfo } from '../lib/data';
-  import { fusedParts, isFused } from '../lib/planner';
+  import { allBalls, icon } from '../lib/data';
+  import { heldLabel, holdsBall, held, type Ball, type BallName, type Held } from '../lib/domain';
   import { balltip, tip } from '../lib/tip.svelte';
   import { hasAnyRole, ROLE_INFO, ROLES, summarize, tagOf, type Role } from '../lib/roles';
   import { exportEdits, roleEdits, roleOf } from '../lib/roleEdits.svelte';
@@ -13,14 +13,14 @@
     onremove,
     ontogglepin,
   }: {
-    owned: string[];
-    pinned: string[];
-    onadd: (name: string) => void;
-    onremove: (name: string) => void;
-    ontogglepin: (name: string) => void;
+    owned: Held[];
+    pinned: BallName[];
+    onadd: (name: BallName) => void;
+    onremove: (h: Held) => void;
+    ontogglepin: (name: BallName) => void;
   } = $props();
 
-  const toggle = (name: string) => (owned.includes(name) ? onremove(name) : onadd(name));
+  const toggle = (name: BallName) => (holdsBall(owned, name) ? onremove(held(name)) : onadd(name));
 
   // Keyboard search (same keys as the level-up picker): type a few letters, Enter to add, repeat.
   let query = $state('');
@@ -35,28 +35,28 @@
     picked = picked.includes(r) ? picked.filter((x) => x !== r) : [...picked, r];
     hi = null;
   };
-  const keep = (name: string) => hasAnyRole(name, picked, roleOf) || (!!tip.anchor && !!grid?.contains(tip.anchor) && tip.names.includes(name));
+  const keep = (name: BallName) => hasAnyRole(name, picked, roleOf) || (!!tip.anchor && !!grid?.contains(tip.anchor) && tip.names.includes(name));
 
   const groups = $derived.by(() => {
     const q = query.trim().toLowerCase();
     const hit = allBalls.filter((b) => b.name.toLowerCase().includes(q) && keep(b.name));
     // prefix matches first, otherwise keep catalogue order
-    const match: BallInfo[] = q ? [...hit.filter((b) => b.name.toLowerCase().startsWith(q)), ...hit.filter((b) => !b.name.toLowerCase().startsWith(q))] : hit;
+    const match: Ball[] = q ? [...hit.filter((b) => b.name.toLowerCase().startsWith(q)), ...hit.filter((b) => !b.name.toLowerCase().startsWith(q))] : hit;
     return [
-      { label: 'Base', balls: match.filter((b) => !b.parents) },
-      { label: 'Evolved', balls: match.filter((b) => !!b.parents) },
+      { label: 'Base', balls: match.filter((b) => !b.parents.length) },
+      { label: 'Evolved', balls: match.filter((b) => !!b.parents.length) },
     ].filter((g) => g.balls.length);
   });
   // the grid in rendered order, so Enter/arrows follow what you see
-  const flat = $derived(groups.flatMap((g): BallInfo[] => g.balls));
+  const flat = $derived(groups.flatMap((g): Ball[] => g.balls));
   const index = $derived(new Map(flat.map((b, i) => [b.name, i])));
   const active = $derived(
-    hi !== null && hi < flat.length ? hi : query.trim() ? flat.findIndex((b) => !owned.includes(b.name)) : -1,
+    hi !== null && hi < flat.length ? hi : query.trim() ? flat.findIndex((b) => !holdsBall(owned, b.name)) : -1,
   );
 
   const build = $derived(summarize(owned, roleOf));
-  const roleTitle = (name: string) => {
-    const t = tagOf(name, roleOf);
+  const roleTitle = (h: Held) => {
+    const t = tagOf(h, roleOf);
     return t?.roles.length ? t.roles.join(', ') + (t.vs ? ` · vs ${t.vs}` : '') : '';
   };
 
@@ -78,7 +78,7 @@
     query = '';
     hi = null;
   };
-  const pick = (name: string) => {
+  const pick = (name: BallName) => {
     toggle(name);
     reset();
     input?.focus();
@@ -122,21 +122,22 @@
 
   {#if owned.length}
     <div class="owned">
-      {#each owned as name (name)}
-        {#if isFused(name)}
+      {#each owned as h (heldLabel(h))}
+        {#if h.kind === 'fused'}
           <!-- a fused ball only holds a slot: no pin, it feeds no recipe -->
-          {@const [a, b] = fusedParts(name)}
+          {@const [a, b] = h.parts}
           <div class="own fused">
-            <span class="who" use:balltip={{ balls: [a, b], tap: true }}><img class="icon sm" src={icon(a)} alt="" /><span class="plus">⊕</span><img class="icon sm" src={icon(b)} alt="" /><span class="nm">{name}</span></span>
-            {@render dots(name)}
-            <button class="ghost tiny" title="Remove" onclick={() => onremove(name)}>✕</button>
+            <span class="who" use:balltip={{ balls: h.parts, tap: true }}><img class="icon sm" src={icon(a)} alt="" /><span class="plus">⊕</span><img class="icon sm" src={icon(b)} alt="" /><span class="nm">{heldLabel(h)}</span></span>
+            {@render dots(h)}
+            <button class="ghost tiny" title="Remove" onclick={() => onremove(h)}>✕</button>
           </div>
         {:else}
+        {@const name = h.name}
         <div class="own" class:pinned={pinned.includes(name)}>
           <span class="who" use:balltip={{ balls: name, tap: true }}><img class="icon sm" src={icon(name)} alt="" />{name}</span>
-          {@render dots(name)}
+          {@render dots(h)}
           <button class="ghost tiny" title="Pin" aria-pressed={pinned.includes(name)} onclick={() => ontogglepin(name)}>📌</button>
-          <button class="ghost tiny" title="Remove" onclick={() => onremove(name)}>✕</button>
+          <button class="ghost tiny" title="Remove" onclick={() => onremove(h)}>✕</button>
         </div>
         {/if}
       {/each}
@@ -186,9 +187,9 @@
       <button
         id="ball-choice-{i}"
         role="option"
-        aria-selected={owned.includes(b.name)}
+        aria-selected={holdsBall(owned, b.name)}
         class="cell"
-        class:have={owned.includes(b.name)}
+        class:have={holdsBall(owned, b.name)}
         class:hi={i === active}
         use:balltip={b.name}
         onclick={() => toggle(b.name)}
@@ -205,10 +206,10 @@
   </div>
 </section>
 
-{#snippet dots(name: string)}
-  {@const t = tagOf(name, roleOf)}
+{#snippet dots(h: Held)}
+  {@const t = tagOf(h, roleOf)}
   {#if t?.roles.length}
-    <span class="dots" title={roleTitle(name)} aria-label={roleTitle(name)}>{#each t.roles as r (r)}<span class="dot role-{r}"></span>{/each}</span>
+    <span class="dots" title={roleTitle(h)} aria-label={roleTitle(h)}>{#each t.roles as r (r)}<span class="dot role-{r}"></span>{/each}</span>
   {/if}
 {/snippet}
 

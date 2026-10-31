@@ -1,10 +1,11 @@
 <script lang="ts">
   import { icon } from '../lib/data';
+  import { fusionLabel, type BallName } from '../lib/domain';
   import type { Node } from '../lib/planner';
   import { balltip } from '../lib/tip.svelte';
   import TreeNode from './TreeNode.svelte';
 
-  let { node, oncycle }: { node: Node; oncycle: (ball: string, next: number) => void } = $props();
+  let { node, oncycle }: { node: Node; oncycle: (ball: BallName, next: number) => void } = $props();
 </script>
 
 <div class="node">
@@ -15,7 +16,7 @@
       {:else}
         <img class="icon sm" src={icon(node.ball)} alt="" />
       {/if}
-      <span>{node.ball}</span>
+      <span>{node.kind === 'fuse' ? fusionLabel(node.children[0].ball, node.children[1].ball) : node.ball}</span>
     </span>
     {#if node.kind === 'owned'}<span class="badge good">have</span>{/if}
     {#if node.kind === 'acquire'}<span class="badge warn">find</span>{/if}

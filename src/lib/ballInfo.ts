@@ -1,13 +1,17 @@
+// Where a ball can go: what it evolves into, which curated targets it leads to or fuses into.
+import type { Catalog } from './catalog';
+import { tierRank, type BallName, type FusionEntry, type TargetEntry, type Tier } from './domain';
+
 export interface Use {
-  with: string[];
-  result: string;
+  with: BallName[];
+  result: BallName;
 }
 
 /** Every recipe that consumes `name`: the other ingredients and what they make. */
-export function evolvesInto(balls: { name: string; parents?: string[][] }[], name: string): Use[] {
+export function evolvesInto(cat: Catalog, name: BallName): Use[] {
   const out: Use[] = [];
-  for (const b of balls) {
-    for (const r of b.parents ?? []) {
+  for (const b of cat.balls) {
+    for (const r of b.parents) {
       const i = r.indexOf(name);
       if (i >= 0) out.push({ with: r.filter((_, j) => j !== i), result: b.name });
     }
@@ -15,24 +19,19 @@ export function evolvesInto(balls: { name: string; parents?: string[][] }[], nam
   return out;
 }
 
-type Recipes = { name: string; parents?: string[][] }[];
-type TierTarget = { kind: string; tier: string; ball?: string; balls?: string[]; why?: string; effect?: string };
-
-const TIER_ORDER = ['S', 'A', 'B', 'C'];
-const tierRank = (t: string) => (TIER_ORDER.indexOf(t) + 1 || 99);
-
 export interface FusionLink {
-  partner: string;
-  tier: string;
-  why?: string;
+  partner: BallName;
+  tier: Tier;
+  why: string;
   effect?: string;
 }
 
+const isFusion = (t: TargetEntry): t is FusionEntry => t.kind === 'fusion';
+
 /** Curated fusion targets that include `name`, best tier first. */
-export function fusionsOf(targets: TierTarget[], name: string): FusionLink[] {
+export function fusionsOf(targets: readonly TargetEntry[], name: BallName): FusionLink[] {
   const out: FusionLink[] = [];
-  for (const t of targets) {
-    if (t.kind !== 'fusion' || !t.balls) continue;
+  for (const t of targets.filter(isFusion)) {
     const i = t.balls.indexOf(name);
     if (i >= 0) out.push({ partner: t.balls[1 - i], tier: t.tier, why: t.why, effect: t.effect });
   }
@@ -40,40 +39,40 @@ export function fusionsOf(targets: TierTarget[], name: string): FusionLink[] {
 }
 
 /** The curated fusion target made of exactly these two balls, in either order. */
-export function fusionFor<T extends TierTarget>(targets: T[], names: string[]): T | undefined {
+export function fusionFor(targets: readonly TargetEntry[], names: readonly BallName[]): FusionEntry | undefined {
   if (names.length !== 2) return;
   const [a, b] = names;
-  return targets.find((t) => t.kind === 'fusion' && !!t.balls && ((t.balls[0] === a && t.balls[1] === b) || (t.balls[0] === b && t.balls[1] === a)));
+  return targets.filter(isFusion).find(({ balls: [x, y] }) => (x === a && y === b) || (x === b && y === a));
 }
 
 export interface Lead {
-  result: string;
-  tier: string;
+  result: BallName;
+  tier: Tier;
   /** Intermediate evolutions between `name` and `result`, in order. */
-  via: string[];
+  via: BallName[];
 }
 
 /**
  * Curated evolution targets reachable from `name` in two or more evolution steps
  * (direct ones are already in evolvesInto). Shortest path; best tier, then fewest steps.
  */
-export function leadsTo(balls: Recipes, targets: TierTarget[], name: string): Lead[] {
-  const prev = new Map<string, string>([[name, '']]);
+export function leadsTo(cat: Catalog, targets: readonly TargetEntry[], name: BallName): Lead[] {
+  const prev = new Map<BallName, BallName | null>([[name, null]]);
   const queue = [name];
   while (queue.length) {
     const cur = queue.shift()!;
-    for (const u of evolvesInto(balls, cur)) {
+    for (const u of evolvesInto(cat, cur)) {
       if (prev.has(u.result)) continue;
       prev.set(u.result, cur);
       queue.push(u.result);
     }
   }
   const out: Lead[] = [];
-  const seen = new Set<string>();
+  const seen = new Set<BallName>();
   for (const t of targets) {
-    if (t.kind !== 'evolution' || !t.ball || seen.has(t.ball) || t.ball === name || !prev.has(t.ball)) continue;
+    if (t.kind !== 'evolution' || seen.has(t.ball) || t.ball === name || !prev.has(t.ball)) continue;
     seen.add(t.ball);
-    const via: string[] = [];
+    const via: BallName[] = [];
     for (let p = prev.get(t.ball)!; p !== name; p = prev.get(p)!) via.unshift(p);
     if (via.length) out.push({ result: t.ball, tier: t.tier, via });
   }

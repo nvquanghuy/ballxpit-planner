@@ -1,7 +1,7 @@
 <script lang="ts">
   import { icon } from '../lib/data';
   import { isReady, type Plan } from '../lib/planner';
-  import type { TargetEntry } from '../lib/targets';
+  import { fusionLabel, type BallName, type TargetEntry } from '../lib/domain';
   import { balltip } from '../lib/tip.svelte';
   import TargetIcon from './TargetIcon.svelte';
   import TreeNode from './TreeNode.svelte';
@@ -18,7 +18,7 @@
     plan: Plan;
     label: string;
     onback: () => void;
-    oncycle: (ball: string, next: number) => void;
+    oncycle: (ball: BallName, next: number) => void;
     ondone: () => void;
   } = $props();
 </script>
@@ -82,7 +82,7 @@
             <span class="muted">{#each s.from as f, j (j)}{#if j}{' + '}{/if}<span class="tap" use:balltip={{ balls: f, tap: true }}>{f}</span>{/each} →</span>
             <span class="ball tap" use:balltip={{ balls: s.kind === 'evolve' ? s.ball : s.from, tap: true }}>
               {#if s.kind === 'evolve'}<img class="icon sm" src={icon(s.ball)} alt="" />{/if}
-              <strong>{s.ball}</strong>
+              <strong>{s.kind === 'evolve' ? s.ball : fusionLabel(...s.from)}</strong>
             </span>
           {/if}
           <span class="held" class:bad={s.held > plan.slots}>{s.held}/{plan.slots}</span>

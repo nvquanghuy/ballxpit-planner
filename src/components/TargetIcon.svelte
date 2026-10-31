@@ -1,10 +1,10 @@
 <script lang="ts">
   import { icon } from '../lib/data';
-  import type { Target } from '../lib/planner';
+  import { targetBalls, type Target } from '../lib/domain';
   import { balltip } from '../lib/tip.svelte';
 
   let { target, size = '', tap = false }: { target: Target; size?: string; tap?: boolean } = $props();
-  const balls = $derived(target.kind === 'evolution' ? [target.ball] : target.balls);
+  const balls = $derived(targetBalls(target));
 </script>
 
 {#if target.kind === 'evolution'}

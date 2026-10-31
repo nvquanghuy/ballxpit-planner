@@ -1,9 +1,10 @@
 <script lang="ts">
   import { catalog, targets } from './lib/data';
-  import { applyPlan, isFused, plan, targetLabel, type Plan } from './lib/planner';
+  import { targetLabel, usableBalls, type TargetId } from './lib/domain';
+  import { plan } from './lib/planner';
   import { suggest } from './lib/targets';
   import { adviseOffers } from './lib/offers';
-  import { decodeHash, encodeHash } from './lib/urlCodec';
+  import { app, dispatch } from './lib/app.svelte';
   import SlotSetup from './components/SlotSetup.svelte';
   import BallPicker from './components/BallPicker.svelte';
   import Suggestions from './components/Suggestions.svelte';
@@ -11,78 +12,40 @@
   import BallTip from './components/BallTip.svelte';
   import Offers from './components/Offers.svelte';
 
-  const init = decodeHash(location.hash);
-  let slots = $state<number | null>(init.slots);
-  let owned = $state<string[]>([...new Set(init.owned)].filter((n) => catalog.isValidOwned(n)));
-  let pinned = $state<string[]>(init.pinned.filter((n) => owned.includes(n) && !isFused(n)));
-  let targetId = $state<string | null>(init.target);
-  let overrides = $state<Record<string, number>>(init.overrides);
-  let offers = $state<string[]>(init.offers.filter((n) => catalog.byName.has(n)));
+  const run = $derived(app.run);
   let showAll = $state(false);
 
-  $effect(() => history.replaceState(null, '', '#' + encodeHash({ slots, owned, pinned, target: targetId, overrides, offers })));
-
   // fused balls take a slot but feed no recipe
-  const usable = $derived(owned.some((n) => !isFused(n)));
-  const suggestions = $derived(
-    slots ? suggest(catalog, targets, { owned, pinned, slots, showAll: showAll || !usable }) : [],
-  );
+  const usable = $derived(usableBalls(run.held).length > 0);
+  const opts = $derived({ owned: run.held, pinned: run.pinned, slots: run.slots ?? 0 });
+  const suggestions = $derived(run.slots ? suggest(catalog, targets, { ...opts, showAll: showAll || !usable }) : []);
 
   const advice = $derived(
-    slots && offers.length ? adviseOffers(catalog, targets, { owned, pinned, slots, offers }) : { ranked: [], directions: [] },
+    run.slots && run.offers.length ? adviseOffers(catalog, targets, { ...opts, offers: run.offers }) : { ranked: [], directions: [] },
   );
 
-  const selected = $derived(targets.find((t) => t.id === targetId) ?? null);
-  const selectedPlan = $derived(
-    selected && slots ? plan(catalog, selected, { owned, pinned, slots, recipeOverrides: overrides }) : null,
-  );
+  const selected = $derived(targets.find((t) => t.id === run.target) ?? null);
+  const selectedPlan = $derived(selected && run.slots ? plan(catalog, selected, { ...opts, recipeOverrides: run.overrides }) : null);
 
-  const add = (n: string) => {
-    owned = [...owned, n];
-    offers = offers.filter((x) => x !== n);
-  };
-  const take = (n: string) => {
-    add(n);
-    offers = [];
-  };
-  const remove = (n: string) => {
-    owned = owned.filter((x) => x !== n);
-    pinned = pinned.filter((x) => x !== n);
-  };
-  const togglePin = (n: string) => (pinned = pinned.includes(n) ? pinned.filter((x) => x !== n) : [...pinned, n]);
-  // Carry out a ready plan; the previous state stays undoable until owned changes again.
-  let undo = $state.raw<{ label: string; fused: boolean; owned: string[]; pinned: string[]; after: string[] } | null>(null);
-  const done = (p: Plan) => {
-    const prev = { owned, pinned };
-    ({ owned, pinned } = applyPlan(owned, pinned, p));
-    undo = { label: p.target, fused: p.tree.kind === 'fuse', ...prev, after: owned };
-    targetId = null;
-  };
-  const undoLast = () => {
-    if (!undo) return;
-    ({ owned, pinned } = undo);
-    undo = null;
-  };
-  const open = (id: string) => {
-    targetId = id;
-    overrides = {};
+  const open = (id: TargetId) => {
+    dispatch({ type: 'open', id });
     scrollTo({ top: 0 });
   };
 </script>
 
-{#if !slots}
-  <SlotSetup onpick={(n) => (slots = n)} />
+{#if !run.slots}
+  <SlotSetup onpick={(n) => dispatch({ type: 'setSlots', slots: n })} />
 {:else}
   <main>
     <nav>
       <strong class="brand">Pit Planner</strong>
-      <span class="muted">{slots} ball slots</span>
-      <button class="ghost" onclick={() => (slots = null)}>change</button>
-      {#if owned.length}<button class="ghost" onclick={() => { owned = []; pinned = []; offers = []; }}>new run</button>{/if}
+      <span class="muted">{run.slots} ball slots</span>
+      <button class="ghost" onclick={() => dispatch({ type: 'setSlots', slots: null })}>change</button>
+      {#if run.held.length}<button class="ghost" onclick={() => dispatch({ type: 'newRun' })}>new run</button>{/if}
     </nav>
 
-    {#if undo && undo.after === owned}
-      <p class="done">{undo.fused ? 'Fused' : 'Evolved'} <strong>{undo.label}</strong> <button class="ghost" onclick={undoLast}>undo</button><button class="ghost" title="Dismiss" onclick={() => (undo = null)}>✕</button></p>
+    {#if app.undo}
+      <p class="done">{app.undo.fused ? 'Fused' : 'Evolved'} <strong>{app.undo.label}</strong> <button class="ghost" onclick={() => dispatch({ type: 'undo' })}>undo</button><button class="ghost" title="Dismiss" onclick={() => dispatch({ type: 'dismissUndo' })}>✕</button></p>
     {/if}
 
     {#if selected && selectedPlan}
@@ -90,27 +53,33 @@
         entry={selected}
         plan={selectedPlan}
         label={targetLabel(selected)}
-        onback={() => (targetId = null)}
-        oncycle={(ball, next) => (overrides = { ...overrides, [ball]: next })}
-        ondone={() => done(selectedPlan)}
+        onback={() => dispatch({ type: 'close' })}
+        oncycle={(ball, recipe) => dispatch({ type: 'setRecipe', ball, recipe })}
+        ondone={() => dispatch({ type: 'apply', plan: selectedPlan })}
       />
     {:else}
       <div class="layout">
-        <BallPicker {owned} {pinned} onadd={add} onremove={remove} ontogglepin={togglePin} />
+        <BallPicker
+          owned={run.held}
+          pinned={run.pinned}
+          onadd={(ball) => dispatch({ type: 'add', ball })}
+          onremove={(held) => dispatch({ type: 'remove', held })}
+          ontogglepin={(ball) => dispatch({ type: 'togglePin', ball })}
+        />
         <div class="right">
           <div class="offers-slot">
             <Offers
-              {owned}
-              {offers}
+              owned={run.held}
+              offers={run.offers}
               {advice}
-              onadd={(n) => (offers = [...offers, n])}
-              onremove={(n) => (offers = offers.filter((x) => x !== n))}
-              ontake={take}
-              onclear={() => (offers = [])}
+              onadd={(ball) => dispatch({ type: 'addOffer', ball })}
+              onremove={(ball) => dispatch({ type: 'removeOffer', ball })}
+              ontake={(ball) => dispatch({ type: 'takeOffer', ball })}
+              onclear={() => dispatch({ type: 'clearOffers' })}
               onopen={open}
             />
           </div>
-          <Suggestions items={suggestions} bind:showAll hasOwned={usable} onopen={open} ondone={(p) => done(p)} />
+          <Suggestions items={suggestions} bind:showAll hasOwned={usable} onopen={open} ondone={(plan) => dispatch({ type: 'apply', plan })} />
         </div>
       </div>
     {/if}

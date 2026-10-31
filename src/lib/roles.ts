@@ -1,5 +1,6 @@
 // Ball roles: what a ball does in a line-up. Researched tags (data/roles.json) + your edits on top.
-import { fusedParts, isFused } from './planner';
+// Parsing lives in parse.ts (parseRoleTags).
+import type { BallName, Held } from './domain';
 
 export const ROLES = ['enabler', 'babymaker', 'effect', 'executioner', 'hitter', 'control', 'sustain', 'amplifier'] as const;
 export type Role = (typeof ROLES)[number];
@@ -24,31 +25,13 @@ export interface RoleTag {
   why?: string;
 }
 
-/** Tag for one ball name (not fused), or undefined when untagged. */
-export type RoleLookup = (name: string) => RoleTag | undefined;
-
-const isRole = (r: unknown): r is Role => ROLES.includes(r as Role);
-const isVs = (v: unknown): v is Vs => VS.includes(v as Vs);
-
-/** Keep well-formed entries only: known names (when given), known roles, no duplicates. */
-export function sanitizeRoles(raw: unknown, known?: (name: string) => boolean): Record<string, RoleTag> {
-  const out: Record<string, RoleTag> = {};
-  if (!raw || typeof raw !== 'object') return out;
-  for (const [name, v] of Object.entries(raw as Record<string, unknown>)) {
-    if (known && !known(name)) continue;
-    if (!v || typeof v !== 'object' || !Array.isArray((v as RoleTag).roles)) continue;
-    const t = v as Record<string, unknown>;
-    const tag: RoleTag = { roles: [...new Set((t.roles as unknown[]).filter(isRole))] };
-    if (isVs(t.vs)) tag.vs = t.vs;
-    if (typeof t.why === 'string' && t.why) tag.why = t.why;
-    out[name] = tag;
-  }
-  return out;
-}
+/** Tag for one ball, or undefined when untagged. */
+export type RoleLookup = (name: BallName) => RoleTag | undefined;
+export type RoleTags = Partial<Record<BallName, RoleTag>>;
 
 /** Your edit wins over the researched tag; the researched `why` is kept. */
 export const lookupWith =
-  (base: Record<string, RoleTag>, edits: Record<string, RoleTag>): RoleLookup =>
+  (base: RoleTags, edits: RoleTags): RoleLookup =>
   (name) => {
     const e = edits[name];
     return e ? { ...e, why: base[name]?.why } : base[name];
@@ -61,17 +44,17 @@ export function mergeVs(vs: (Vs | undefined)[]): Vs | undefined {
   return w && b ? 'both' : w ? 'waves' : b ? 'bosses' : undefined;
 }
 
-/** Tag of an owned entry; a fused ball ("A ⊕ B") gets the union of its parts, in display order. */
-export function tagOf(name: string, lookup: RoleLookup): RoleTag | undefined {
-  if (!isFused(name)) return lookup(name);
-  const parts = fusedParts(name).map(lookup).filter((t) => !!t);
+/** Tag of a held ball; a fused ball gets the union of its parts, in display order. */
+export function tagOf(h: Held, lookup: RoleLookup): RoleTag | undefined {
+  if (h.kind === 'ball') return lookup(h.name);
+  const parts = h.parts.map(lookup).filter((t) => !!t);
   if (!parts.length) return undefined;
   const has = new Set(parts.flatMap((t) => t.roles));
   return { roles: ROLES.filter((r) => has.has(r)), vs: mergeVs(parts.map((t) => t.vs)) };
 }
 
 /** Grid filter: no roles picked = everything; otherwise any picked role. */
-export const hasAnyRole = (name: string, picked: Role[], lookup: RoleLookup) =>
+export const hasAnyRole = (name: BallName, picked: Role[], lookup: RoleLookup) =>
   !picked.length || !!lookup(name)?.roles.some((r) => picked.includes(r));
 
 export interface BuildSummary {
@@ -81,8 +64,8 @@ export interface BuildSummary {
   untagged: number;
 }
 
-/** Roles present across owned balls (fused count once, as their union) and the gaps worth knowing. */
-export function summarize(owned: string[], lookup: RoleLookup): BuildSummary {
+/** Roles present across held balls (fused count once, as their union) and the gaps worth knowing. */
+export function summarize(owned: readonly Held[], lookup: RoleLookup): BuildSummary {
   const tags = owned.map((n) => tagOf(n, lookup));
   const known = tags.filter((t) => !!t);
   const n = (r: Role) => known.filter((t) => t.roles.includes(r)).length;
@@ -103,7 +86,7 @@ const SPREAD: Role[] = ['enabler', 'babymaker'];
 const PAYLOAD: Role[] = ['effect', 'executioner'];
 
 /** "enabler + effect" when one part spreads and the other carries the payload (the top-fusion pattern). */
-export function comboOf(a: string, b: string, lookup: RoleLookup): string | null {
+export function comboOf(a: BallName, b: BallName, lookup: RoleLookup): string | null {
   const ra = lookup(a)?.roles ?? [];
   const rb = lookup(b)?.roles ?? [];
   const pair = (x: Role[], y: Role[]) => {
