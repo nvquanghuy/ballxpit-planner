@@ -19,6 +19,7 @@ export const tip = $state<{ names: string[]; anchor: HTMLElement | null; hover: 
 });
 
 export const openTip = (anchor: HTMLElement, names: string[], hover = false, directions: TipDirection[] | null = null) => {
+  cancelClose();
   tip.anchor = anchor;
   tip.names = names;
   tip.hover = hover;
@@ -26,9 +27,19 @@ export const openTip = (anchor: HTMLElement, names: string[], hover = false, dir
 };
 
 export const closeTip = () => {
+  cancelClose();
   tip.anchor = null;
   tip.names = [];
   tip.directions = null;
+};
+
+// A hover popover lingers briefly after the pointer leaves, so it can travel onto the panel.
+const GRACE_MS = 200;
+let closing: ReturnType<typeof setTimeout> | undefined;
+export const cancelClose = () => clearTimeout(closing);
+export const closeSoon = () => {
+  clearTimeout(closing);
+  closing = setTimeout(() => tip.hover && closeTip(), GRACE_MS);
 };
 
 const HOVER_MS = 250;
@@ -56,12 +67,13 @@ export const balltip: Action<HTMLElement, TipArg> = (node, arg) => {
   const enter = (e: PointerEvent) => {
     if (e.pointerType !== 'mouse') return;
     clearTimeout(timer);
+    if (tip.anchor === node) return cancelClose();
     timer = setTimeout(() => openTip(node, names, true, directions), HOVER_MS);
   };
   const leave = (e: PointerEvent) => {
     if (e.pointerType !== 'mouse') return;
     clearTimeout(timer);
-    if (tip.anchor === node && tip.hover) closeTip();
+    if (tip.anchor === node && tip.hover) closeSoon();
   };
   const down = (e: PointerEvent) => {
     if (e.pointerType === 'mouse') return;

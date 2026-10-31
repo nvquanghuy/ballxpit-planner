@@ -1,7 +1,7 @@
 <script lang="ts">
   import { allBalls, ballInfo, icon, targets } from '../lib/data';
   import { evolvesInto, fusionsOf, leadsTo } from '../lib/ballInfo';
-  import { closeTip, tip } from '../lib/tip.svelte';
+  import { cancelClose, closeSoon, closeTip, tip } from '../lib/tip.svelte';
 
   let panel = $state<HTMLElement>();
   let pos = $state<{ x: number; y: number } | null>(null);
@@ -50,6 +50,8 @@
     class:ready={!!pos}
     role="tooltip"
     bind:this={panel}
+    onpointerenter={(e) => e.pointerType === 'mouse' && cancelClose()}
+    onpointerleave={(e) => e.pointerType === 'mouse' && tip.hover && closeSoon()}
     style:left="{pos?.x ?? 0}px"
     style:top="{pos?.y ?? 0}px"
   >
@@ -165,6 +167,7 @@
     max-width: min(320px, calc(100vw - 16px));
     max-height: min(70vh, 520px);
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 10px;
     display: grid;
     gap: 10px;
@@ -176,7 +179,6 @@
     visibility: hidden;
   }
   .tip.ready { visibility: visible; }
-  .tip.hover { pointer-events: none; }
   section { display: grid; gap: 6px; }
   section + section { padding-top: 10px; border-top: 1px solid var(--line); }
   header { display: flex; gap: 8px; align-items: center; }
