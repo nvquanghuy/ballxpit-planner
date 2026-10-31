@@ -3,7 +3,8 @@
   import { isReady, type Plan } from '../lib/planner';
   import { TIERS, type Suggestion, type Tier } from '../lib/targets';
   import { balltip } from '../lib/tip.svelte';
-  import { comboFor } from '../lib/roleEdits.svelte';
+  import { comboFor, roleOf } from '../lib/roleEdits.svelte';
+  import { ROLE_INFO, tagOf } from '../lib/roles';
   import TargetIcon from './TargetIcon.svelte';
 
   let {
@@ -56,6 +57,7 @@
     {#each shown as s (s.entry.id)}
       {@const ready = isReady(s.plan)}
       {@const combo = comboFor(s.entry)}
+      {@const tag = tagOf(s.label, roleOf)}
       <li>
         <button class="card" class:nofit={!s.plan.fits} class:ready onclick={() => onopen(s.entry.id)}>
           <TargetIcon target={s.entry} size="lg" />
@@ -66,6 +68,12 @@
               {#if s.entry.unverified}<span class="tag">unverified</span>{/if}
               {#if combo}<span class="combo" title="One part spreads (enabler/babymaker), the other carries the payload (effect/executioner): the pattern behind most top fusions">{combo}</span>{/if}
             </div>
+            {#if tag?.roles.length}
+              <div class="row roles">
+                {#each tag.roles as r (r)}<span class="role role-{r}" title={ROLE_INFO[r]}>{r}</span>{/each}
+                {#if tag.vs}<span class="muted vs">vs {tag.vs}</span>{/if}
+              </div>
+            {/if}
             <div class="row">
               {#if s.plan.have.length}
                 <span class="lbl good">have</span>
@@ -117,6 +125,7 @@
   .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--warn); margin-left: 2px; }
   .lbl.good { color: var(--good); margin-right: 0; }
   .row .lbl + .icon, .row .need:first-of-type { margin-left: 0; }
+  .vs { font-size: 11px; margin-left: 2px; }
   .need { display: inline-flex; align-items: flex-end; }
   sub { font-size: 11px; color: var(--warn); }
   .small { font-size: 12px; }
