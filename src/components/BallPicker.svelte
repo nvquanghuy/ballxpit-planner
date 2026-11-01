@@ -3,7 +3,8 @@
   import { allBalls, icon } from '../lib/data';
   import { heldLabel, holdsBall, held, type Ball, type BallName, type Held } from '../lib/domain';
   import { balltip, tip } from '../lib/tip.svelte';
-  import { hasAnyRole, ROLE_INFO, ROLES, summarize, tagOf, type Role } from '../lib/roles';
+  import { hasAnyRole, roleHint, ROLES, summarize, tagOf, type Role } from '../lib/roles';
+  import { hint } from '../lib/hint';
   import { exportEdits, roleEdits, roleOf } from '../lib/roleEdits.svelte';
 
   let {
@@ -144,7 +145,7 @@
     </div>
     {#if build.counts.length || build.missing.length}
       <p class="build">
-        {#each build.counts as c (c.role)}<span class="role role-{c.role}" title={ROLE_INFO[c.role]}>{c.n} {c.role}</span>{/each}
+        {#each build.counts as c (c.role)}<span class="role role-{c.role}" use:hint={roleHint(c.role)}>{c.n} {c.role}</span>{/each}
         {#if build.missing.length}<span class="miss">{build.missing.join(' · ')}</span>{/if}
         {#if build.untagged}<span class="muted">{build.untagged} untagged</span>{/if}
       </p>
@@ -174,7 +175,7 @@
 
   <div class="rolefilter" role="group" aria-label="Filter by role">
     {#each ROLES as r (r)}
-      <button class="role role-{r}" aria-pressed={picked.includes(r)} title={ROLE_INFO[r]} onmousedown={(e) => e.preventDefault()} onclick={() => togglePick(r)}>{r}</button>
+      <button class="role role-{r}" aria-pressed={picked.includes(r)} use:hint={roleHint(r)} onmousedown={(e) => e.preventDefault()} onclick={() => togglePick(r)}>{r}</button>
     {/each}
     {#if picked.length}<button class="ghost tiny" title="Clear role filter" onmousedown={(e) => e.preventDefault()} onclick={() => ((picked = []), (hi = null))}>✕</button>{/if}
   </div>

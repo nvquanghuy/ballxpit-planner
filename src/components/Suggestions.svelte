@@ -5,7 +5,8 @@
   import { TIERS, type TargetId, type Tier } from '../lib/domain';
   import { balltip } from '../lib/tip.svelte';
   import { comboFor, roleOf } from '../lib/roleEdits.svelte';
-  import { ROLE_INFO, tagOf } from '../lib/roles';
+  import { COMBO_HINT, roleHint, tagOf, vsHint } from '../lib/roles';
+  import { hint } from '../lib/hint';
   import TargetIcon from './TargetIcon.svelte';
 
   let {
@@ -67,12 +68,12 @@
               <span class="tier tier-{s.entry.tier}">{s.entry.tier}</span>
               <strong>{s.label}</strong>
               {#if s.entry.unverified}<span class="tag">unverified</span>{/if}
-              {#if combo}<span class="combo" title="One part spreads (enabler/babymaker), the other carries the payload (effect/executioner): the pattern behind most top fusions">{combo}</span>{/if}
+              {#if combo}<span class="combo" use:hint={COMBO_HINT}>{combo}</span>{/if}
             </div>
             {#if tag?.roles.length}
               <div class="row roles">
-                {#each tag.roles as r (r)}<span class="role role-{r}" title={ROLE_INFO[r]}>{r}</span>{/each}
-                {#if tag.vs}<span class="muted vs">vs {tag.vs}</span>{/if}
+                {#each tag.roles as r (r)}<span class="role role-{r}" use:hint={roleHint(r)}>{r}</span>{/each}
+                {#if tag.vs}<span class="muted vs" use:hint={vsHint(tag.vs)}>vs {tag.vs}</span>{/if}
               </div>
             {/if}
             <div class="row">

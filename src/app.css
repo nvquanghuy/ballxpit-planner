@@ -100,3 +100,11 @@ button.role:hover { border-color: var(--c, var(--accent)); }
 .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--c, var(--muted)); flex-shrink: 0; }
 /* Fusion pattern hint: spreader + payload. */
 .combo { font-size: 11px; line-height: 16px; padding: 0 5px; border-radius: 4px; white-space: nowrap; color: var(--muted); border: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent); }
+/* Tag tooltip (lib/hint.ts). */
+.taghint {
+  position: fixed; z-index: 100; max-width: min(280px, calc(100vw - 16px)); pointer-events: none;
+  padding: 6px 9px; border-radius: 6px; font-size: 12px; line-height: 1.4;
+  color: var(--text); background: var(--panel-2); border: 1px solid var(--line); box-shadow: 0 4px 14px rgb(0 0 0 / 0.4);
+}
+.role, .vs, .combo { cursor: help; }
+button.role { cursor: pointer; }

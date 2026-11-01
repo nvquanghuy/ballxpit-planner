@@ -5,6 +5,8 @@
   import type { OfferAdvice, OfferResult } from '../lib/offers';
   import { balltip, type TipDirection } from '../lib/tip.svelte';
   import { comboFor } from '../lib/roleEdits.svelte';
+  import { COMBO_HINT } from '../lib/roles';
+  import { hint } from '../lib/hint';
 
   let {
     owned,
@@ -192,7 +194,7 @@
             <button class="dir" onclick={() => onopen(d.entry.id)}>
               <span class="tier tier-{d.entry.tier}">{d.entry.tier}</span>
               <strong class="label">{d.label}</strong>
-              {#if combo}<span class="combo" title="One part spreads (enabler/babymaker), the other carries the payload (effect/executioner): the pattern behind most top fusions">{combo}</span>{/if}
+              {#if combo}<span class="combo" use:hint={COMBO_HINT}>{combo}</span>{/if}
               <span class="muted need">need {d.before} → {d.picks[0].after}</span>
               <span class="picks">
                 {#each d.picks as p (p.ball)}<img class="icon sm" src={icon(p.ball)} alt={p.ball} title={p.ball} />{/each}

@@ -3,7 +3,7 @@ import balls from '../data/balls.json';
 import rolesFile from '../../data/roles.json';
 import { fused, held, type BallName } from './domain';
 import { parseBalls } from './parse';
-import { comboOf, hasAnyRole, lookupWith, mergeVs, ROLES, summarize, tagOf, VS, type RoleTags } from './roles';
+import { comboOf, hasAnyRole, lookupWith, mergeVs, roleHint, ROLES, summarize, tagOf, VS, vsHint, type RoleTags } from './roles';
 
 // Fake names: roles.ts never looks a ball up in the catalogue.
 const b = (s: string) => s as BallName;
@@ -103,5 +103,12 @@ describe('comboOf', () => {
     expect(comboOf(b('Ghost'), b('Brood'), look)).toBeNull();
     expect(comboOf(b('Burn'), b('Doom'), look)).toBeNull();
     expect(comboOf(b('Ghost'), b('Iron'), look)).toBeNull();
+  });
+});
+
+describe('tag hints', () => {
+  it('names the tag and explains it', () => {
+    for (const r of ROLES) expect(roleHint(r)).toMatch(new RegExp(`^${r}: .+`, 'i'));
+    for (const v of VS) expect(vsHint(v)).toMatch(new RegExp(`^vs ${v}: .+`));
   });
 });

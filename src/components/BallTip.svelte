@@ -5,7 +5,8 @@
   import { fusionLabel, type BallName } from '../lib/domain';
   import { evolvesInto, fusionFor, fusionsOf, leadsTo } from '../lib/ballInfo';
   import { cancelClose, closeSoon, closeTip, tip } from '../lib/tip.svelte';
-  import { ROLE_INFO, ROLES, VS, type Role, type Vs } from '../lib/roles';
+  import { roleHint, ROLES, VS, vsHint, type Role, type Vs } from '../lib/roles';
+  import { hint } from '../lib/hint';
   import { resetRoles, roleEdits, roleOf, setRoles } from '../lib/roleEdits.svelte';
 
   let panel = $state<HTMLElement>();
@@ -119,19 +120,19 @@
             {#each ROLES as r (r)}
               <!-- 1-3 roles, as in roles.json, so an export always merges cleanly -->
               {@const stuck = on.includes(r) ? on.length === 1 : on.length >= 3}
-              <button class="role role-{r}" aria-pressed={on.includes(r)} disabled={stuck} title={stuck ? (on.length === 1 ? 'Keep at least one role' : 'At most 3 roles') : ROLE_INFO[r]} onclick={() => toggleRole(b.name, r)}>{r}</button>
+              <button class="role role-{r}" aria-pressed={on.includes(r)} disabled={stuck} use:hint={stuck ? (on.length === 1 ? 'Keep at least one role' : 'At most 3 roles') : roleHint(r)} onclick={() => toggleRole(b.name, r)}>{r}</button>
             {/each}
             <span class="vspick">
               <span class="muted">vs</span>
-              {#each VS as v (v)}<button class="role" aria-pressed={tag?.vs === v} disabled={!on.length} title={on.length ? undefined : 'Pick a role first'} onclick={() => setVs(b.name, v)}>{v}</button>{/each}
+              {#each VS as v (v)}<button class="role" aria-pressed={tag?.vs === v} disabled={!on.length} use:hint={on.length ? vsHint(v) : 'Pick a role first'} onclick={() => setVs(b.name, v)}>{v}</button>{/each}
             </span>
             <span class="acts">
               {#if edited}<button class="ghost mini" title="Back to the researched tags" onclick={() => resetRoles(b.name)}>reset</button>{/if}
               <button class="ghost mini" onclick={() => (editing = null)}>done</button>
             </span>
           {:else}
-            {#each tag?.roles ?? [] as r (r)}<span class="role role-{r}" title={ROLE_INFO[r]}>{r}</span>{/each}
-            {#if tag?.vs}<span class="vs">vs {tag.vs}</span>{/if}
+            {#each tag?.roles ?? [] as r (r)}<span class="role role-{r}" use:hint={roleHint(r)}>{r}</span>{/each}
+            {#if tag?.vs}<span class="vs" use:hint={vsHint(tag.vs)}>vs {tag.vs}</span>{/if}
             {#if !tag?.roles.length}<span class="muted">no role tags</span>{/if}
             <span class="acts">
               {#if edited}

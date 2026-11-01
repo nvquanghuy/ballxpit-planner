@@ -18,6 +18,19 @@ export const ROLE_INFO: Record<Role, string> = {
   amplifier: 'makes enemies take more damage, boosting other balls',
 };
 
+export const VS_INFO: Record<Vs, string> = {
+  waves: 'best at clearing crowds of regular enemies',
+  bosses: 'best at single big targets like bosses',
+  both: 'good against crowds and bosses alike',
+};
+
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+/** Tooltip text for a role or vs chip. */
+export const roleHint = (r: Role) => `${cap(r)}: ${ROLE_INFO[r]}`;
+export const vsHint = (v: Vs) => `vs ${v}: ${VS_INFO[v]}`;
+export const COMBO_HINT =
+  'Spreader + payload: one part spreads hits (enabler/babymaker), the other carries the damage or status (effect/executioner). The pattern behind most top fusions.';
+
 export interface RoleTag {
   /** Most important first. */
   roles: Role[];
